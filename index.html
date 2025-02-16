@@ -213,7 +213,7 @@
         <!-- Job 1: Enhance -->
         <div
           class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
-          @click="openWork2 = !openWork2"
+          @click="openWork1 = !openWork1"
         >
           <div class="flex items-center justify-between">
             <h3 class="text-xl font-normal">Enghance VietNam</h3>
@@ -227,12 +227,12 @@
             <p class="text-sm text-accent"><strong></strong></p>
             <i
               class="fas"
-              :class="openWork2 ? 'fa-chevron-up' : 'fa-chevron-down'"
+              :class="openWork1 ? 'fa-chevron-up' : 'fa-chevron-down'"
             ></i>
           </div>
 
           <!-- Nội dung chi tiết (dropdown) -->
-          <div x-show="openWork2" x-collapse.duration.300ms class="mt-4">
+          <div x-show="openWork1" x-collapse.duration.300ms class="mt-4">
             <p>
               <span class="font-semibold">Description:</span> Enhance Vietnam is
               an EdTech startup offering excellent English courses through
@@ -271,7 +271,7 @@
         <!-- Job 2: Viettel Solutions -->
         <div
           class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
-          @click="openWork1 = !openWork1"
+          @click="openWork2 = !openWork2"
         >
           <div class="flex items-center justify-between">
             <h3 class="text-xl font-normal">Viettel Solutions</h3>
@@ -285,12 +285,12 @@
             <p class="text-sm text-accent"><strong></strong></p>
             <i
               class="fas"
-              :class="openWork1 ? 'fa-chevron-up' : 'fa-chevron-down'"
+              :class="openWork2 ? 'fa-chevron-up' : 'fa-chevron-down'"
             ></i>
           </div>
 
           <!-- Nội dung chi tiết (dropdown) -->
-          <div x-show="openWork1" x-collapse.duration.300ms class="mt-4">
+          <div x-show="openWork2" x-collapse.duration.300ms class="mt-4">
             <p>
               <span class="font-semibold">Description:</span> Selected from over
               3,000 applicants to become a talent intern in the Viettel Digital
