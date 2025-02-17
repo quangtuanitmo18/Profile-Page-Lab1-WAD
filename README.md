@@ -2,6 +2,8 @@
 
 This project is a personal portfolio website built with HTML, Alpine.js, and Tailwind CSS that serves as a static profile page about yourself. It showcases personal information, work experience, education, projects, skills, and hobbies. Additionally, an ExpressJS backend is used to serve the frontend and, by leveraging a template engine, dynamically render the profile page. The project demonstrates both basic methods of serving static assets and advanced methods of rendering dynamic content, providing flexibility and ease of customization.
 
+<a href="https://quangtuanitmo18.github.io/Profile-Page-Lab1-WAD/">Link github page</a>
+
 <div align="center">
   <img width="1000" src="./public/images/profile.png" alt="profile">
 </div>
