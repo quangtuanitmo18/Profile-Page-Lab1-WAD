@@ -293,7 +293,7 @@
           <div x-show="openWork2" x-collapse.duration.300ms class="mt-4">
             <p>
               <span class="font-semibold">Description:</span> Selected from over
-              3,000 applicants to become a talent intern in the Viettel Digital
+              500 applicants to become a talent intern in the Viettel Digital
               Talent 2024 program, ranked top 10 in the Cloud field.
             </p>
 
@@ -405,271 +405,241 @@
 
       <!-- Projects Section -->
       <section
-        class="mb-16"
-        x-data="{ openProject1: true, openProject2: false, openProject3: false, openProject4: false, openProject5: false }"
+      class="mb-16"
+      x-data="{ openProject1: false, openProject2: false, openProject3: false, openProject4: false, openProject5: false }"
       >
-        <h2 class="mb-8 text-2xl font-heading">Projects</h2>
+      <h2 class="mb-8 text-2xl font-heading">Projects</h2>
 
-        <!-- Project 1: Shopee Clone -->
-        <div
-          class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
-          @click="openProject1 = !openProject1"
-        >
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold">
-              Shopee Clone
-              <a
-                href="https://github.com/quangtuanitmo18/E-commerce-Vite-TS"
-                class="ml-2 text-primary hover:text-opacity-80"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-            </h3>
-            <i
-              class="fas"
-              :class="openProject1 ? 'fa-chevron-up' : 'fa-chevron-down'"
-            ></i>
-          </div>
-
-          <!-- Nội dung chi tiết (dropdown) -->
-          <div x-show="openProject1" x-collapse.duration.300ms class="mt-4">
-            <p>
-              <strong>Description:</strong> A learning project that replicates
-              some features of the e-commerce platform Shopee.
-            </p>
-
-            <p class="mt-2">
-              <strong>Technologies:</strong> ReactJs, TypeScript, TailwindCSS,
-              React Query, Vitest, Storybook, React Helmet
-            </p>
-
-            <p class="mt-2 font-semibold">Functions:</p>
-            <ul class="space-y-2 list-disc list-inside">
-              <li>JWT authentication (auto-refresh with refresh token)</li>
-              <li>Product pagination, filtering, and searching</li>
-              <li>Asynchronous state management with React Query</li>
-              <li>Code splitting</li>
-              <li>Performance optimization by analyzing build size</li>
-              <li>SEO with React Helmet</li>
-              <li>Unit testing with Vitest</li>
-              <li>Component management with Storybook</li>
-            </ul>
-
-            <p class="mt-2">
-              <strong>Website:</strong>
-              <a
-                href="https://shopee-clone-ts-nu.vercel.app/"
-                class="text-primary hover:text-opacity-80"
-                >Shopee Clone</a
-              >
-            </p>
-          </div>
+      <!-- Project 1: QR code order -->
+      <div
+        class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
+        @click="openProject1 = !openProject1"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">
+            QR code order
+            <a
+              href="https://github.com/quangtuanitmo18/QR-code-order"
+              class="ml-2 text-primary hover:text-opacity-80"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </h3>
+          <i
+            class="fas"
+            :class="openProject1 ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
         </div>
 
-        <!-- Project 3: QR code order -->
-        <div
-          class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
-          @click="openProject2 = !openProject2"
-        >
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold">
-              QR code order
-              <a
-                href="https://github.com/quangtuanitmo18/QR-code-order"
-                class="ml-2 text-primary hover:text-opacity-80"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-            </h3>
-            <i
-              class="fas"
-              :class="openProject2 ? 'fa-chevron-up' : 'fa-chevron-down'"
-            ></i>
-          </div>
+        <!-- Detailed content (dropdown) -->
+        <div x-show="openProject1" x-collapse.duration.300ms class="mt-4">
+          <p>
+            <strong>Description:</strong> A solution for ordering food using QR codes, inspired by Sapo FNB, that optimizes the ordering process and order management for restaurants and cafes.
+          </p>
 
-          <!-- Nội dung chi tiết (dropdown) -->
-          <div x-show="openProject2" x-collapse.duration.300ms class="mt-4">
-            <p>
-              <strong>Description:</strong> A solution for ordering food using
-              QR codes, inspired by Sapo FNB, that optimizes the ordering
-              process and order management for restaurants and cafes.
-            </p>
+          <p class="mt-2">
+            <strong>Technologies:</strong> Fastify, Prisma, TypeScript, SQLite, WebSockets, RESTful API, Next.js, Shadcn/ui, React Query
+          </p>
 
-            <p class="mt-2">
-              <strong>Technologies:</strong> Fastify, Prisma, TypeScript,
-              SQLite, WebSockets, RESTful API
-            </p>
-
-            <p class="mt-2 font-semibold">Functions:</p>
+          <p class="mt-2 font-semibold">Functions:</p>
+          <ul class="space-y-2 list-disc list-inside">
+            <li>Manage personal account, staff accounts, menu items, order invoices, revenue statistics.</li>
+            <li>View Menu: Access an online menu displaying the full list of dishes with images, descriptions, and prices.</li>
+            <li>Order via QR Code: Each table or area is assigned a unique QR code that directs customers to the ordering interface.</li>
+            <li>Optimize SEO using Next.js features for enhanced online visibility.</li>
+            <li>Utilize WebSockets to enable real-time order processing and status updates.</li>
+          </ul>
+          <p class="mt-2">
+            <strong>Website:</strong>
             <ul class="space-y-2 list-disc list-inside">
               <li>
-                Manage personal account, staff accounts, menu items, order
-                invoices, evenue statistics
+                <a
+                  href="https://164181.msk.web.highserver.ru/en/login"
+                  class="text-primary hover:text-opacity-80"
+                >QR code order</a>
               </li>
-              <li>
-                View Menu: Access an online menu displaying the full list of
-                dishes with images, descriptions, and prices.
-              </li>
-              <li>
-                Order via QR Code: Each table or area is assigned a unique QR
-                code that directs customers to the ordering interface.
-              </li>
+              <li>Account Admin: admin@order.com / password: 123456</li>
             </ul>
-          </div>
+          </p>
+        </div>
+      </div>
+
+      <!-- Project 2: Viettel Digital Talent Cloud Phase 1 -->
+      <div
+        class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
+        @click="openProject2 = !openProject2"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">
+            Viettel Digital Talent Cloud Phase 1
+            <a
+              href="https://github.com/quangquantum18/Viettel-Digital-Talent-2024"
+              class="ml-2 text-primary hover:text-opacity-80"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </h3>
+          <i
+            class="fas"
+            :class="openProject2 ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
         </div>
 
-        <!-- Project 3: Twitter Clone -->
-        <div
-          class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
-          @click="openProject3 = !openProject3"
-        >
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold">
-              Twitter Clone
-              <a
-                href="https://github.com/quangtuanitmo18/nodejs-twitter"
-                class="ml-2 text-primary hover:text-opacity-80"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-            </h3>
-            <i
-              class="fas"
-              :class="openProject3 ? 'fa-chevron-up' : 'fa-chevron-down'"
-            ></i>
-          </div>
+        <!-- Detailed content (dropdown) -->
+        <div x-show="openProject2" x-collapse.duration.300ms class="mt-4">
+          <p>
+            <span class="font-semibold">Description:</span> Mid-term and final assignments for Phase 1 of the Viettel Digital Talent Program, testing candidates' knowledge and capabilities.
+          </p>
 
-          <!-- Nội dung chi tiết (dropdown) -->
-          <div x-show="openProject3" x-collapse.duration.300ms class="mt-4">
-            <p>
-              <strong>Description:</strong> A project that replicates some
-              features of the social network Twitter for learning purposes.
-            </p>
+          <p class="mt-2">
+            <span class="font-semibold">Technologies:</span> Docker, Kubernetes, IAC (Ansible, Vagrant, Helm), Monitoring (Grafana, Prometheus), Logging (Fluentd, Logstash, Elasticsearch, Kibana), CI/CD (Gitlab CI/CD, Jenkins), GitOps (ArgoCD)
+          </p>
 
-            <p class="mt-2">
-              <strong>Technologies:</strong> ExpressJS, TypeScript, MongoDB,
-              RESTful API
-            </p>
+          <p class="mt-2 font-semibold">Functions:</p>
+          <ul class="space-y-2 list-disc list-inside">
+            <li>Developed a 3-tier web application.</li>
+            <li>Deployed the web application using DevOps tools.</li>
+          </ul>
+        </div>
+      </div>
 
-            <p class="mt-2 font-semibold">Functions:</p>
-            <ul class="space-y-2 list-disc list-inside">
-              <li>JWT user authentication (OAuth2 with Google)</li>
-              <li>Media stream handling</li>
-              <li>Video encoding to HLS with FFmpeg</li>
-              <li>Used AWS services (S3, SES)</li>
-              <li>GitHub Actions for automated testing and deployment</li>
-            </ul>
-          </div>
+      <!-- Project 3: Viettel Digital Talent Cloud Phase 2 - Cloud development environment -->
+      <div
+        class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
+        @click="openProject3 = !openProject3"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">
+            Viettel Digital Talent Cloud Phase 2 - Cloud development environment
+            <a
+              href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2"
+              class="ml-2 text-primary hover:text-opacity-80"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </h3>
+          <i
+            class="fas"
+            :class="openProject3 ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
         </div>
 
-        <!-- Project 4: Viettel Digital Talent Cloud Assignment -->
-        <div
-          class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
-          @click="openProject4 = !openProject4"
-        >
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold">
-              Viettel Digital Talent Cloud Assignment
-              <a
-                href="https://github.com/quangquantum18/Viettel-Digital-Talent-2024"
-                class="ml-2 text-primary hover:text-opacity-80"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-            </h3>
-            <i
-              class="fas"
-              :class="openProject4 ? 'fa-chevron-up' : 'fa-chevron-down'"
-            ></i>
-          </div>
+        <!-- Detailed content (dropdown) -->
+        <div x-show="openProject3" x-collapse.duration.300ms class="mt-4">
+          <p>
+            <span class="font-semibold">Description:</span> This project is a comprehensive guide on building a Cloud Development Environment (CDE) using Kubernetes. It covers everything from the basics of Kubernetes to advanced topics like custom controllers, custom resources, operators, Eclipse Che integration, and deploying the complete solution on a public Kubernetes cluster.
+          </p>
 
-          <!-- Nội dung chi tiết (dropdown) -->
-          <div x-show="openProject4" x-collapse.duration.300ms class="mt-4">
-            <p>
-              <span class="font-semibold">Description:</span> Mid-term and final
-              assignments for Phase 1 of the Viettel Digital Talent Program,
-              testing candidates' knowledge and capabilities.
-            </p>
+          <p class="mt-2">
+            <span class="font-semibold">Technologies:</span> Kubernetes, Helm, GitOps, Eclipse Che, Dex, Kind and Minikube
+          </p>
 
-            <p class="mt-2">
-              <span class="font-semibold">Technologies:</span> Docker,
-              Kubernetes, IAC (Ansible, Vagrant, Helm), Monitoring (Grafana,
-              Prometheus), Logging (Fluentd, Logstash, Elasticsearch, Kibana),
-              CI/CD (Gitlab CI/CD, Jenkins), GitOps (ArgoCD)
-            </p>
+          <p class="mt-2 font-semibold">Functions:</p>
+          <ul class="space-y-2 list-disc list-inside">
+            <li>Introduction to Kubernetes, Kubernetes Controllers, Kubebuilder & Custom Controllers.</li>
+            <li>Explained fundamentals of Kubernetes controllers and their role in reconciling desired vs. actual state.</li>
+            <li>Detailed the use of Operators and the DevWorkspace Operator with Eclipse Che integration.</li>
+            <li>Provided a step-by-step guide to deploy a Cloud Development Environment on a public Kubernetes cluster with proper networking, TLS certificates, and OIDC authentication.</li>
+          </ul>
+        </div>
+      </div>
 
-            <p class="mt-2 font-semibold">Functions:</p>
-            <ul class="space-y-2 list-disc list-inside">
-              <li>Developed a 3-tier web application</li>
-              <li>Deployed the web application using DevOps tools</li>
-            </ul>
-          </div>
+      <!-- Project 4: Shopee Clone -->
+      <div
+        class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
+        @click="openProject4 = !openProject4"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">
+            Shopee Clone
+            <a
+              href="https://github.com/quangtuanitmo18/E-commerce-Vite-TS"
+              class="ml-2 text-primary hover:text-opacity-80"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </h3>
+          <i
+            class="fas"
+            :class="openProject4 ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
         </div>
 
-        <!-- Project 5: Cloud development Environment -->
-        <div
-          class="p-6 mb-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
-          @click="openProject5 = !openProject5"
-        >
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold">
-              Cloud development environment
-              <a
-                href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2"
-                class="ml-2 text-primary hover:text-opacity-80"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-            </h3>
-            <i
-              class="fas"
-              :class="openProject5 ? 'fa-chevron-up' : 'fa-chevron-down'"
-            ></i>
-          </div>
+        <!-- Detailed content (dropdown) -->
+        <div x-show="openProject4" x-collapse.duration.300ms class="mt-4">
+          <p>
+            <strong>Description:</strong> A learning project that replicates some features of the e-commerce platform Shopee.
+          </p>
 
-          <!-- Nội dung chi tiết (dropdown) -->
-          <div x-show="openProject5" x-collapse.duration.300ms class="mt-4">
-            <p>
-              <span class="font-semibold">Description:</span>This project is a
-              comprehensive guide on building a Cloud Development Environment
-              (CDE) using Kubernetes. It covers everything from the basics of
-              Kubernetes to advanced topics like custom controllers, custom
-              resources, operators, Eclipse Che integration, and deploying the
-              complete solution on a public Kubernetes cluster.
-            </p>
+          <p class="mt-2">
+            <strong>Technologies:</strong> ReactJs, TypeScript, TailwindCSS, React Query, Vitest, Storybook, React Helmet
+          </p>
 
-            <p class="mt-2">
-              <span class="font-semibold">Technologies:</span> Kubernetes, Helm,
-              GitOps, Eclipse Che, Dex, Kind and Minikube
-            </p>
-
-            <p class="mt-2 font-semibold">Functions:</p>
+          <p class="mt-2 font-semibold">Functions:</p>
+          <ul class="space-y-2 list-disc list-inside">
+            <li>Developed secure JWT authentication with auto-refresh using refresh tokens.</li>
+            <li>Enabled robust product management through pagination, filtering, and searching.</li>
+            <li>Leveraged React Query for efficient asynchronous state management.</li>
+            <li>Implemented code splitting and build size analysis for performance optimization.</li>
+            <li>Enhanced SEO using React Helmet.</li>
+            <li>Ensured code quality with unit testing via Vitest and managed components with Storybook.</li>
+          </ul>
+          <p class="mt-2">
+            <strong>Website:</strong>
             <ul class="space-y-2 list-disc list-inside">
               <li>
-                Introduction to Kubernetes, Kubernetes Controllers, Kubebuilder
-                & Custom Controllers
-              </li>
-              <li>
-                Kubernetes Controllers: Learn about the fundamentals of
-                Kubernetes controllers, including how they are designed to
-                reconcile the desired state with the actual state of the
-                cluster.
-              </li>
-              <li>
-                Understand Operators and DevWorkspace Operator. Learn about
-                Eclipse Che, a Kubernetes-native integrated developer
-                environment, its features, and how to deploy it for cloud-native
-                development.
-              </li>
-              <li>
-                Follow a step-by-step guide to deploy your Cloud Development
-                Environment on a public Kubernetes cluster while configuring
-                networking, TLS certificates, and OIDC authentication.
+                <a
+                  href="https://shopee-clone-ts-nu.vercel.app/"
+                  class="text-primary hover:text-opacity-80"
+                >Shopee Clone</a>
               </li>
             </ul>
-          </div>
+          </p>
         </div>
+      </div>
+
+      <!-- Project 5: Twitter Clone -->
+      <div
+        class="p-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card"
+        @click="openProject5 = !openProject5"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold">
+            Twitter Clone
+            <a
+              href="https://github.com/quangtuanitmo18/nodejs-twitter"
+              class="ml-2 text-primary hover:text-opacity-80"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+          </h3>
+          <i
+            class="fas"
+            :class="openProject5 ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </div>
+
+        <!-- Detailed content (dropdown) -->
+        <div x-show="openProject5" x-collapse.duration.300ms class="mt-4">
+          <p>
+            <strong>Description:</strong> A project that replicates some features of the social network Twitter for learning purposes.
+          </p>
+
+          <p class="mt-2">
+            <strong>Technologies:</strong> ExpressJS, TypeScript, MongoDB, RESTful API
+          </p>
+
+          <p class="mt-2 font-semibold">Functions:</p>
+          <ul class="space-y-2 list-disc list-inside">
+            <li>Implemented robust JWT user authentication with OAuth2 integration using Google.</li>
+            <li>Integrated a video encoding pipeline with FFmpeg to convert videos to HLS format for adaptive streaming.</li>
+            <li>Leveraged AWS services, including S3 for secure media storage and SES for reliable email notifications.</li>
+            <li>Automated testing and deployment workflows using GitHub Actions, ensuring continuous integration and streamlined releases.</li>
+          </ul>
+        </div>
+      </div>
       </section>
+
 
       <!-- Skills Section -->
       <section class="mb-16">
