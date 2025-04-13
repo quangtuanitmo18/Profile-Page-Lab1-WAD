@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html
+  lang="ru"
+  x-data="{ 
+  darkMode: localStorage.getItem('darkMode') === 'true' ? true : false,
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    localStorage.setItem('darkMode', this.darkMode);
+  }
+}"
+  :class="darkMode ? 'dark' : ''"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Портфолио-TuanDev</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="//unpkg.com/@alpinejs/collapse" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- tailwind config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#0D6EFD",
+                foreground: "#FFFFFF",
+              },
+              secondary: {
+                DEFAULT: "#F0F1F3",
+                foreground: "#020817",
+              },
+              accent: {
+                DEFAULT: "#6D7074",
+                foreground: "#020817",
+              },
+              background: "#FAFAFB",
+              foreground: "#020817",
+              card: {
+                DEFAULT: "#FFFFFF",
+                foreground: "#020817",
+              },
+              popover: {
+                DEFAULT: "#FFFFFF",
+                foreground: "#020817",
+              },
+              muted: {
+                DEFAULT: "#F0F1F3",
+                foreground: "#6D7074",
+              },
+              destructive: {
+                DEFAULT: "#FF4C4C",
+                foreground: "#FFFFFF",
+              },
+              border: "#E0E0E0",
+              input: "#E0E0E0",
+              ring: "#0D6EFD",
+              chart: {
+                1: "#FF6F61",
+                2: "#4CAF50",
+                3: "#03A9F4",
+                4: "#FFC107",
+                5: "#8E44AD",
+              },
+              dark: {
+                primary: {
+                  DEFAULT: "#0D6EFD",
+                  foreground: "#FFFFFF",
+                },
+                secondary: {
+                  DEFAULT: "#1E1E2C",
+                  foreground: "#FAFAFB",
+                },
+                accent: {
+                  DEFAULT: "#6D7074",
+                  foreground: "#FAFAFB",
+                },
+                background: "#020817",
+                foreground: "#FAFAFB",
+                card: {
+                  DEFAULT: "#121212",
+                  foreground: "#FAFAFB",
+                },
+                popover: {
+                  DEFAULT: "#121212",
+                  foreground: "#FAFAFB",
+                },
+                muted: {
+                  DEFAULT: "#1E1E2C",
+                  foreground: "#6D7074",
+                },
+                destructive: {
+                  DEFAULT: "#FF4C4C",
+                  foreground: "#FFFFFF",
+                },
+                border: "#3C3C3C",
+                input: "#3C3C3C",
+                ring: "#0D6EFD",
+              },
+            },
+            borderRadius: {
+              sm: "0.125rem",
+            },
+            boxShadow: {
+              sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+            },
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+            },
+            fontSize: {
+              heading: "42px",
+              body: "15px",
+              "section-title": "28px",
+              "card-title": "22px",
+            },
+            fontWeight: {
+              heading: "700",
+              body: "400",
+              "section-title": "600",
+            },
+          },
+        },
+        plugins: [],
+        darkMode: "class",
+      };
+    </script>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.plugin(window.Collapse);
+      });
+    </script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-heading {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Новые стили для улучшения компоновки */
+      .container {
+        max-width: 1200px;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        padding: 2rem;
+      }
+
+      .dark .hero-section {
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-left: 28px;
+      }
+
+      .timeline-item:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background-color: #0d6efd;
+      }
+
+      .timeline-item:after {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 0;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background-color: #0d6efd;
+      }
+
+      .project-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card-body {
+        flex: 1;
+      }
+
+      .section-header {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+      }
+
+      .section-header:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background-color: #0d6efd;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground font-inter"
+  >
+    <div class="container px-4 py-8 mx-auto">
+      <!-- Theme Toggle -->
+      <div class="fixed z-50 top-4 right-4">
+        <button
+          @click="toggleDarkMode()"
+          class="p-2 transition-transform duration-300 rounded-full bg-secondary dark:bg-dark-secondary hover:scale-110"
+        >
+          <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+        </button>
+      </div>
+
+      <!-- Header Section -->
+      <header class="hero-section mb-16 section-fade-in">
+        <div class="flex flex-col items-center gap-8 md:flex-row">
+          <div
+            class="relative w-48 h-48 overflow-hidden transition-transform duration-300 rounded-full ring-4 ring-primary hover:scale-105"
+          >
+            <img
+              src="./images/avatar.jpeg"
+              alt="Фото профиля"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <div class="text-center md:text-left">
+            <h1 class="mb-2 text-heading font-heading">Нгуен Куанг Туан</h1>
+            <p class="mb-4 text-xl text-accent">Инженер-программист</p>
+            <div class="space-y-2">
+              <p>
+                <i class="mr-2 fas fa-phone text-primary"></i>+7 953 362 67 95
+              </p>
+              <p>
+                <i class="mr-2 fas fa-envelope text-primary"></i
+                >quangtuanitmo18@gmail.com
+              </p>
+              <div class="flex justify-center gap-4 mt-4 md:justify-start">
+                <a
+                  href="https://github.com/quangtuanitmo18"
+                  class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                  ><i class="text-2xl fab fa-github"></i
+                ></a>
+                <a
+                  href="#"
+                  class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                  ><i class="text-2xl fab fa-linkedin"></i
+                ></a>
+                <a
+                  href="#"
+                  class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                  ><i class="text-2xl fab fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Introduction Section -->
+      <section
+        class="p-8 mb-16 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover section-fade-in"
+      >
+        <h2 class="mb-4 text-section-title font-section-title section-header">
+          О себе
+        </h2>
+        <p class="mb-4">
+          Full-stack разработчик с двухлетним опытом и страстью к созданию
+          интуитивных веб-приложений. Моя цель — соединять технические знания с
+          пользовательскими потребностями, создавая решения, которые
+          действительно работают. В своей работе я стараюсь достичь идеального
+          баланса между производительностью, эстетикой и функциональностью.
+        </p>
+        <p class="mb-4">
+          Постоянно изучаю новые технологии и методологии разработки, чтобы
+          применять актуальные подходы в своих проектах. Обладаю хорошими
+          навыками коммуникации и работы в команде, что помогает эффективно
+          взаимодействовать с коллегами и достигать поставленных целей.
+        </p>
+        <blockquote class="pl-4 italic border-l-4 border-primary">
+          "Функция хорошего программного обеспечения — делать сложное простым."
+          – Грейди Буч
+        </blockquote>
+      </section>
+
+      <!-- Work Experience Section -->
+      <section
+        class="mb-16 section-fade-in"
+        x-data="{ openWork1: true, openWork2: false, openWork3: false }"
+      >
+        <h2 class="mb-8 text-section-title font-section-title section-header">
+          Опыт работы
+        </h2>
+
+        <div class="space-y-6">
+          <!-- Job 1: Enhance -->
+          <div
+            class="p-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card card-hover"
+            @click="openWork1 = !openWork1"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between"
+            >
+              <div>
+                <h3 class="text-card-title font-card-title text-primary">
+                  Enghance VietNam
+                </h3>
+                <h4 class="mt-1 text-lg italic font-normal">
+                  Full-stack разработчик (удаленно)
+                </h4>
+              </div>
+              <span
+                class="mt-2 md:mt-0 px-3 py-1 text-sm rounded-full bg-primary/10 text-primary"
+                >10/2022 - настоящее время</span
+              >
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >ReactJs</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >ExpressJs</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >AWS</span
+                >
+              </div>
+              <i
+                class="fas"
+                :class="openWork1 ? 'fa-chevron-up' : 'fa-chevron-down'"
+              ></i>
+            </div>
+
+            <!-- Подробное содержание (выпадающий список) -->
+            <div x-show="openWork1" x-collapse.duration.300ms class="mt-4">
+              <div class="p-4 mb-4 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <p>
+                  <span class="font-semibold">Описание:</span> EdTech-стартап,
+                  предлагающий курсы английского языка через платформы
+                  самообучения для вьетнамских студентов.
+                </p>
+              </div>
+
+              <p class="mt-2">
+                <span class="font-semibold">Технологии:</span> ReactJs, Theme
+                Minimal(MUI), Lexical, Typescript, ExpressJs, PostgreSQL,
+                Webflow, Retool, AWS
+              </p>
+
+              <div class="mt-4">
+                <p class="mb-2 font-semibold">Обязанности:</p>
+                <ul class="space-y-2 timeline-item">
+                  <li class="pl-4">
+                    Разработка и развертывание проекта (фронтенд и бэкенд)
+                  </li>
+                  <li class="pl-4">
+                    Использование сервисов AWS (EC2, ECS, RDS, S3, SES,
+                    CloudFront)
+                  </li>
+                  <li class="pl-4">Разработка и внедрение CI/CD процессов</li>
+                  <li class="pl-4">
+                    Внедрение системы публикации/подписки для межкомпонентного
+                    взаимодействия
+                  </li>
+                  <li class="pl-4">
+                    Интеграция механизма очередей задач для оптимизации
+                    приложения
+                  </li>
+                  <li class="pl-4">
+                    Создание лендингов на Webflow и внутренних инструментов с
+                    Retool
+                  </li>
+                  <li class="pl-4">
+                    Код-ревью и техническое наставничество для команды
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 2: Viettel Solutions -->
+          <div
+            class="p-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card card-hover"
+            @click="openWork2 = !openWork2"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between"
+            >
+              <div>
+                <h3 class="text-card-title font-card-title text-primary">
+                  Viettel Solutions
+                </h3>
+                <h4 class="mt-1 text-lg italic font-normal">
+                  Стажёр по облачным технологиям (Программа цифровых талантов
+                  Viettel)
+                </h4>
+              </div>
+              <span
+                class="mt-2 md:mt-0 px-3 py-1 text-sm rounded-full bg-primary/10 text-primary"
+                >02/2024 - 09/2024</span
+              >
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >Kubernetes</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >Docker</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >CI/CD</span
+                >
+              </div>
+              <i
+                class="fas"
+                :class="openWork2 ? 'fa-chevron-up' : 'fa-chevron-down'"
+              ></i>
+            </div>
+
+            <!-- Подробное содержание (выпадающий список) -->
+            <div x-show="openWork2" x-collapse.duration.300ms class="mt-4">
+              <div class="p-4 mb-4 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <p>
+                  <span class="font-semibold">Описание:</span> Выбран из более
+                  чем 500 кандидатов для участия в программе цифровых талантов
+                  Viettel 2024, занял место в топ-10 в области облачных
+                  технологий.
+                </p>
+              </div>
+
+              <div class="mt-4">
+                <p class="mb-2 font-semibold">Обязанности:</p>
+                <ul class="space-y-2 timeline-item">
+                  <li class="pl-4">
+                    Исследовал и развернул среду разработки в облаке на
+                    Kubernetes (Eclipse-che, devworkspace-controller,...)
+                  </li>
+                  <li class="pl-4">
+                    Изучал основные концепции DevSecOps, включая CI/CD,
+                    виртуализацию, контейнеризацию, мониторинг, логирование,
+                    тестирование и др.
+                  </li>
+                  <li class="pl-4">
+                    Применял популярные инструменты DevOps, такие как Docker,
+                    Kubernetes, IAC (Ansible, Vagrant, Helm), мониторинг
+                    (Grafana, Prometheus), логирование (Fluentd, Logstash,
+                    Elasticsearch, Kibana), CI/CD (Gitlab CI/CD, Jenkins),
+                    GitOps (ArgoCD).
+                  </li>
+                </ul>
+              </div>
+              <a
+                class="block mt-4 text-primary"
+                href="https://drive.google.com/file/d/1MqXnwVBLcHP5AJ-4CONhGYj4BGhvviYf/view"
+                target="_blank"
+                >Сертификат участия</a
+              >
+            </div>
+          </div>
+
+          <!-- Job 3: Lectron -->
+          <div
+            class="p-6 rounded-lg shadow-md cursor-pointer bg-card dark:bg-dark-card card-hover"
+            @click="openWork3 = !openWork3"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between"
+            >
+              <div>
+                <h3 class="text-card-title font-card-title text-primary">
+                  Lectron
+                </h3>
+                <h4 class="mt-1 text-lg italic font-normal">
+                  Стажёр по веб-разработке (удаленно)
+                </h4>
+              </div>
+              <span
+                class="mt-2 md:mt-0 px-3 py-1 text-sm rounded-full bg-primary/10 text-primary"
+                >06/2022 - 10/2022</span
+              >
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >Laravel</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >Tailwind CSS</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                  >WordPress</span
+                >
+              </div>
+              <i
+                class="fas"
+                :class="openWork3 ? 'fa-chevron-up' : 'fa-chevron-down'"
+              ></i>
+            </div>
+
+            <!-- Подробное содержание (выпадающий список) -->
+            <div x-show="openWork3" x-collapse.duration.300ms class="mt-4">
+              <div class="p-4 mb-4 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <p>
+                  <span class="font-semibold">Описание:</span> Стартап-проект,
+                  предлагающий защиту от DDoS-атак для игровых серверов и
+                  бэкенд-приложений, которому доверяют тысячи пользователей.
+                </p>
+              </div>
+
+              <div class="mt-4">
+                <p class="mb-2 font-semibold">Обязанности:</p>
+                <ul class="space-y-2 timeline-item">
+                  <li class="pl-4">
+                    Разработал адаптивный и совместимый пользовательский
+                    интерфейс для различных устройств.
+                  </li>
+                  <li class="pl-4">
+                    Создал целевую страницу компании с использованием WordPress,
+                    настроил темы и интегрировал плагины для улучшения
+                    функциональности.
+                  </li>
+                  <li class="pl-4">
+                    Обрабатывал бэкенд-логику и писал модульные тесты.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section class="mb-16 section-fade-in">
+        <h2 class="mb-8 text-section-title font-section-title section-header">
+          Образование
+        </h2>
+
+        <!-- Education Block 1 -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div
+            class="p-6 mb-6 rounded-lg shadow-md bg-card dark:bg-dark-card md:col-span-1 card-hover"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between"
+            >
+              <div>
+                <h3 class="text-card-title font-card-title text-primary">
+                  Университет ИТМО
+                </h3>
+                <p class="mt-2 text-accent italic">Бакалавриат</p>
+              </div>
+              <span
+                class="mt-2 md:mt-0 px-3 py-1 text-sm rounded-full bg-primary/10 text-primary"
+                >10/2019 - 07/2024</span
+              >
+            </div>
+
+            <div class="mt-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p><strong>Специальность:</strong> Информационная безопасность</p>
+              <p class="mt-1"><strong>Средний балл:</strong> 4.8/5</p>
+            </div>
+          </div>
+
+          <!-- Education Block 2 -->
+          <div
+            class="p-6 rounded-lg shadow-md bg-card dark:bg-dark-card md:col-span-1 card-hover"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between"
+            >
+              <div>
+                <h3 class="text-card-title font-card-title text-primary">
+                  Университет ИТМО
+                </h3>
+                <p class="mt-2 text-accent italic">Магистратура</p>
+              </div>
+              <span
+                class="mt-2 md:mt-0 px-3 py-1 text-sm rounded-full bg-primary/10 text-primary"
+                >09/2024 - 07/2026</span
+              >
+            </div>
+
+            <div class="mt-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p><strong>Специальность:</strong> Информационная безопасность</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section
+        class="mb-16 section-fade-in"
+        x-data="{ 
+          openProject1: false, 
+          openProject2: false, 
+          openProject3: false, 
+          openProject4: false, 
+          openProject5: false, 
+          openProject6: false,
+          openProject7: false,
+          currentSlide: 0,
+          totalSlides: 3,
+          nextSlide() {
+            this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+          },
+          prevSlide() {
+            this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+          }
+        }"
+      >
+        <h2 class="mb-8 text-section-title font-section-title section-header">
+          Проекты
+        </h2>
+
+        <div class="relative">
+          <!-- Navigation Buttons -->
+          <button
+            @click="prevSlide"
+            class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-card dark:bg-dark-card rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-transform hover:scale-105"
+          >
+            <i class="fas fa-chevron-left text-primary"></i>
+          </button>
+
+          <button
+            @click="nextSlide"
+            class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-card dark:bg-dark-card rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-transform hover:scale-105"
+          >
+            <i class="fas fa-chevron-right text-primary"></i>
+          </button>
+
+          <!-- Slide Container with Transition Effect -->
+          <div class="overflow-hidden">
+            <div
+              class="transform transition-transform duration-500 ease-in-out"
+              :style="{ 'transform': `translateX(-${currentSlide * 100}%)` }"
+            >
+              <div class="flex">
+                <!-- Slide 1 -->
+                <div class="w-full flex-shrink-0 px-12">
+                  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <!-- Project 1: QR code order -->
+                    <div
+                      class="project-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover"
+                    >
+                      <div class="project-card-body">
+                        <div class="flex items-center justify-between">
+                          <h3
+                            class="text-card-title font-card-title text-primary"
+                          >
+                            Система заказов по QR-коду
+                          </h3>
+                          <a
+                            href="https://github.com/quangtuanitmo18/QR-code-order"
+                            class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                          >
+                            <i class="text-xl fab fa-github"></i>
+                          </a>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >Fastify</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >Next.js</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >TypeScript</span
+                          >
+                        </div>
+
+                        <p class="mt-3 text-accent text-sm">
+                          Решение для цифровизации ресторанного бизнеса с
+                          использованием QR-кодов
+                        </p>
+                      </div>
+
+                      <div
+                        class="flex justify-between items-center mt-4 pt-4 border-t border-border dark:border-dark-border"
+                      >
+                        <a
+                          href="https://164181.msk.web.highserver.ru/en/login"
+                          class="text-primary hover:underline text-sm"
+                        >
+                          Демо проекта
+                        </a>
+                        <button
+                          @click="openProject1 = true"
+                          class="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition"
+                        >
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Project 2: Shopee Clone -->
+                    <div
+                      class="project-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover"
+                    >
+                      <div class="project-card-body">
+                        <div class="flex items-center justify-between">
+                          <h3
+                            class="text-card-title font-card-title text-primary"
+                          >
+                            Клон Shopee
+                          </h3>
+                          <a
+                            href="https://github.com/quangtuanitmo18/E-commerce-Vite-TS"
+                            class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                          >
+                            <i class="text-xl fab fa-github"></i>
+                          </a>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >ReactJs</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >TypeScript</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >TailwindCSS</span
+                          >
+                        </div>
+
+                        <p class="mt-3 text-accent text-sm">
+                          Платформа электронной коммерции с полнофункциональной
+                          системой управления товарами
+                        </p>
+                      </div>
+
+                      <div
+                        class="flex justify-between items-center mt-4 pt-4 border-t border-border dark:border-dark-border"
+                      >
+                        <a
+                          href="https://shopee-clone-ts-nu.vercel.app/"
+                          class="text-primary hover:underline text-sm"
+                        >
+                          Демо проекта
+                        </a>
+                        <button
+                          @click="openProject4 = true"
+                          class="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition"
+                        >
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="w-full flex-shrink-0 px-12">
+                  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <!-- Project 3: Twitter Clone -->
+                    <div
+                      class="project-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover"
+                    >
+                      <div class="project-card-body">
+                        <div class="flex items-center justify-between">
+                          <h3
+                            class="text-card-title font-card-title text-primary"
+                          >
+                            Клон Twitter
+                          </h3>
+                          <a
+                            href="https://github.com/quangtuanitmo18/nodejs-twitter"
+                            class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                          >
+                            <i class="text-xl fab fa-github"></i>
+                          </a>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >ExpressJS</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >MongoDB</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >AWS</span
+                          >
+                        </div>
+
+                        <p class="mt-3 text-accent text-sm">
+                          Бэкенд социальной платформы с функциями публикации и
+                          работы с медиа-контентом
+                        </p>
+                      </div>
+
+                      <div
+                        class="flex justify-between items-center mt-4 pt-4 border-t border-border dark:border-dark-border"
+                      >
+                        <a
+                          href="https://github.com/quangtuanitmo18/nodejs-twitter"
+                          class="text-primary hover:underline text-sm"
+                        >
+                          Код проекта
+                        </a>
+                        <button
+                          @click="openProject5 = true"
+                          class="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition"
+                        >
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Project 4: Viettel Digital Talent Phase 2 -->
+                    <div
+                      class="project-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover"
+                    >
+                      <div class="project-card-body">
+                        <div class="flex items-center justify-between">
+                          <h3
+                            class="text-card-title font-card-title text-primary"
+                          >
+                            Viettel Digital Talent Cloud Phase 2
+                          </h3>
+                          <a
+                            href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2"
+                            class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                          >
+                            <i class="text-xl fab fa-github"></i>
+                          </a>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >Kubernetes</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >Docker</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >DevOps</span
+                          >
+                        </div>
+
+                        <p class="mt-3 text-accent text-sm">
+                          Руководство по созданию облачной среды разработки на
+                          базе Kubernetes
+                        </p>
+                      </div>
+
+                      <div
+                        class="flex justify-between items-center mt-4 pt-4 border-t border-border dark:border-dark-border"
+                      >
+                        <a
+                          href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2"
+                          class="text-primary hover:underline text-sm"
+                        >
+                          Код проекта
+                        </a>
+                        <button
+                          @click="openProject3 = true"
+                          class="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition"
+                        >
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="w-full flex-shrink-0 px-12">
+                  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <!-- Project 5: Viettel Digital Talent Phase 1 -->
+                    <div
+                      class="project-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover"
+                    >
+                      <div class="project-card-body">
+                        <div class="flex items-center justify-between">
+                          <h3
+                            class="text-card-title font-card-title text-primary"
+                          >
+                            Viettel Digital Talent Phase 1
+                          </h3>
+                          <a
+                            href="https://github.com/quangquantum18/Viettel-Digital-Talent-2024"
+                            class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                          >
+                            <i class="text-xl fab fa-github"></i>
+                          </a>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >Docker</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >DevOps</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >CI/CD</span
+                          >
+                        </div>
+
+                        <p class="mt-3 text-accent text-sm">
+                          Разработка и развертывание веб-приложения с
+                          трехуровневой архитектурой
+                        </p>
+                      </div>
+
+                      <div
+                        class="flex justify-between items-center mt-4 pt-4 border-t border-border dark:border-dark-border"
+                      >
+                        <a
+                          href="https://github.com/quangquantum18/Viettel-Digital-Talent-2024"
+                          class="text-primary hover:underline text-sm"
+                        >
+                          Код проекта
+                        </a>
+                        <button
+                          @click="openProject6 = true"
+                          class="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition"
+                        >
+                          Подробнее
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Project 6: Next.js Landing Page -->
+                    <div
+                      class="project-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover"
+                    >
+                      <div class="project-card-body">
+                        <div class="flex items-center justify-between">
+                          <h3
+                            class="text-card-title font-card-title text-primary"
+                          >
+                            Modern Landing Page
+                          </h3>
+                          <a
+                            href="https://github.com/quangtuanitmo18/NextJS-Landing-page"
+                            class="text-primary hover:text-opacity-80 hover:scale-110 transition-transform"
+                          >
+                            <i class="text-xl fab fa-github"></i>
+                          </a>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >Next.js 14</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >Tailwind CSS</span
+                          >
+                          <span
+                            class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 rounded"
+                            >TypeScript</span
+                          >
+                        </div>
+
+                        <p class="mt-3 text-accent text-sm">
+                          Отзывчивый лендинг с темной темой
+                        </p>
+                      </div>
+
+                      <div
+                        class="flex justify-between items-center mt-4 pt-4 border-t border-border dark:border-dark-border"
+                      >
+                        <a
+                          href="https://next-js-landing-page-seven.vercel.app/"
+                          class="text-primary hover:underline text-sm"
+                        >
+                          Демо проекта
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination indicators -->
+          <div class="flex justify-center mt-6 space-x-2">
+            <button
+              @click="currentSlide = 0"
+              :class="{'bg-primary': currentSlide === 0, 'bg-gray-300 dark:bg-gray-600': currentSlide !== 0}"
+              class="w-3 h-3 rounded-full transition-colors duration-300"
+            ></button>
+            <button
+              @click="currentSlide = 1"
+              :class="{'bg-primary': currentSlide === 1, 'bg-gray-300 dark:bg-gray-600': currentSlide !== 1}"
+              class="w-3 h-3 rounded-full transition-colors duration-300"
+            ></button>
+            <button
+              @click="currentSlide = 2"
+              :class="{'bg-primary': currentSlide === 2, 'bg-gray-300 dark:bg-gray-600': currentSlide !== 2}"
+              class="w-3 h-3 rounded-full transition-colors duration-300"
+            ></button>
+          </div>
+        </div>
+
+        <!-- Project Modals -->
+        <!-- Modal 1: QR code order -->
+        <div
+          x-show="openProject1"
+          @keydown.escape.window="openProject1 = false"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          x-transition.opacity
+          style="display: none"
+        >
+          <div
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            @click.stop
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold text-primary">
+                Система заказов по QR-коду
+              </h3>
+              <button
+                @click="openProject1 = false"
+                class="text-accent hover:text-primary"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <p class="mb-4">
+              <strong>Описание:</strong> Решение для цифровизации ресторанного
+              бизнеса с использованием QR-кодов, оптимизирующее процесс заказа и
+              управления для кафе и ресторанов.
+            </p>
+
+            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p class="font-semibold mb-2">Технологии:</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Fastify</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Prisma</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >TypeScript</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >SQLite</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >WebSockets</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Next.js</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Shadcn/ui</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >React Query</span
+                >
+              </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Ключевые функции:</h4>
+            <ul class="space-y-2 list-disc list-inside mb-4">
+              <li>Управление меню, заказами, персоналом и аналитика доходов</li>
+              <li>Интерактивное онлайн-меню с детальным представлением блюд</li>
+              <li>Система QR-кодов для быстрого оформления заказов</li>
+              <li>SEO-оптимизация с Next.js</li>
+              <li>Обработка заказов в реальном времени через WebSockets</li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+              <a
+                href="https://164181.msk.web.highserver.ru/en/login"
+                class="text-primary hover:underline"
+                target="_blank"
+              >
+                Открыть демо
+              </a>
+              <p class="text-gray-500 text-bold">(admin@order.com / 123456)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal 2: Shopee Clone -->
+        <div
+          x-show="openProject4"
+          @keydown.escape.window="openProject4 = false"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          x-transition.opacity
+          style="display: none"
+        >
+          <div
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            @click.stop
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold text-primary">Клон Shopee</h3>
+              <button
+                @click="openProject4 = false"
+                class="text-accent hover:text-primary"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <p class="mb-4">
+              <strong>Описание:</strong> Платформа электронной коммерции с
+              полнофункциональной системой управления товарами и пользователями.
+            </p>
+
+            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p class="font-semibold mb-2">Технологии:</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >ReactJs</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >TypeScript</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >TailwindCSS</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >React Query</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Vitest</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Storybook</span
+                >
+              </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Функциональность:</h4>
+            <ul class="space-y-2 list-disc list-inside mb-4">
+              <li>JWT-аутентификация с автоматическим обновлением токенов</li>
+              <li>Управление товарами с пагинацией, фильтрацией и поиском</li>
+              <li>Оптимизированное управление состоянием через React Query</li>
+              <li>Разделение кода и оптимизация производительности</li>
+              <li>SEO-улучшения с React Helmet</li>
+              <li>Тестирование компонентов с Vitest и Storybook</li>
+            </ul>
+
+            <div class="mt-4">
+              <a
+                href="https://shopee-clone-ts-nu.vercel.app/"
+                class="text-primary hover:underline"
+                target="_blank"
+              >
+                Открыть демо
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal 3: Twitter Clone -->
+        <div
+          x-show="openProject5"
+          @keydown.escape.window="openProject5 = false"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          x-transition.opacity
+          style="display: none"
+        >
+          <div
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            @click.stop
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold text-primary">Клон Twitter</h3>
+              <button
+                @click="openProject5 = false"
+                class="text-accent hover:text-primary"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <p class="mb-4">
+              <strong>Описание:</strong> Бэкенд социальной платформы с функциями
+              публикации, взаимодействия и медиа-контента.
+            </p>
+
+            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p class="font-semibold mb-2">Технологии:</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >ExpressJS</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >TypeScript</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >MongoDB</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >RESTful API</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >AWS S3</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >AWS SES</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >OAuth2</span
+                >
+              </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Функциональность:</h4>
+            <ul class="space-y-2 list-disc list-inside mb-4">
+              <li>JWT-аутентификация с интеграцией OAuth2 через Google</li>
+              <li>
+                Конвертация видео в HLS формат для адаптивного стриминга с
+                FFmpeg
+              </li>
+              <li>
+                Хранение медиафайлов в AWS S3 и отправка уведомлений через SES
+              </li>
+              <li>
+                CI/CD с GitHub Actions для автоматизации тестирования и
+                развертывания
+              </li>
+            </ul>
+
+            <div class="mt-4">
+              <a
+                href="https://github.com/quangtuanitmo18/nodejs-twitter"
+                class="text-primary hover:underline"
+                target="_blank"
+              >
+                Репозиторий GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal 4: Viettel Digital Talent -->
+        <div
+          x-show="openProject3"
+          @keydown.escape.window="openProject3 = false"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          x-transition.opacity
+          style="display: none"
+        >
+          <div
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            @click.stop
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold text-primary">
+                Viettel Digital Talent Cloud
+              </h3>
+              <button
+                @click="openProject3 = false"
+                class="text-accent hover:text-primary"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <p class="mb-4">
+              <strong>Описание:</strong> Руководство по созданию облачной среды
+              разработки на базе Kubernetes с контроллерами, операторами и
+              интеграцией Eclipse Che.
+            </p>
+
+            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p class="font-semibold mb-2">Технологии:</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Kubernetes</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Helm</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >GitOps</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Eclipse Che</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Dex</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Kind</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Minikube</span
+                >
+              </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Ключевые компоненты:</h4>
+            <ul class="space-y-2 list-disc list-inside mb-4">
+              <li>Разработка кастомных контроллеров Kubernetes и операторов</li>
+              <li>Настройка DevWorkspace Operator с интеграцией Eclipse Che</li>
+              <li>
+                Безопасное развертывание в публичном кластере с TLS и OIDC
+              </li>
+              <li>Оптимизация конфигурации сети и управления ресурсами</li>
+            </ul>
+
+            <div class="mt-4">
+              <a
+                href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2"
+                class="text-primary hover:underline"
+                target="_blank"
+              >
+                Репозиторий GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal 5: Viettel Digital Talent Phase 1 -->
+        <div
+          x-show="openProject6"
+          @keydown.escape.window="openProject6 = false"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          x-transition.opacity
+          style="display: none"
+        >
+          <div
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            @click.stop
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold text-primary">
+                Viettel Digital Talent Phase 1
+              </h3>
+              <button
+                @click="openProject6 = false"
+                class="text-accent hover:text-primary"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <p class="mb-4">
+              <strong>Описание:</strong> Промежуточные и итоговые задания для
+              первой фазы программы Viettel Digital Talent, проверяющие знания и
+              навыки кандидатов.
+            </p>
+
+            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p class="font-semibold mb-2">Технологии:</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Docker</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Kubernetes</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Ansible</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Vagrant</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Helm</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Prometheus</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Grafana</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >CI/CD</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >ArgoCD</span
+                >
+              </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Функциональность:</h4>
+            <ul class="space-y-2 list-disc list-inside mb-4">
+              <li>Разработка веб-приложения с трехуровневой архитектурой</li>
+              <li>
+                Развертывание веб-приложения с использованием инструментов
+                DevOps
+              </li>
+              <li>
+                Настройка мониторинга и логирования для отслеживания
+                производительности
+              </li>
+              <li>Внедрение непрерывной интеграции и доставки (CI/CD)</li>
+            </ul>
+
+            <div class="mt-4">
+              <a
+                href="https://github.com/quangquantum18/Viettel-Digital-Talent-2024"
+                class="text-primary hover:underline"
+                target="_blank"
+              >
+                Репозиторий GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal 6: Next.js Landing Page -->
+        <div
+          x-show="openProject7"
+          @keydown.escape.window="openProject7 = false"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          x-transition.opacity
+          style="display: none"
+        >
+          <div
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            @click.stop
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold text-primary">
+                Modern Landing Page
+              </h3>
+              <button
+                @click="openProject7 = false"
+                class="text-accent hover:text-primary"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <p class="mb-4">
+              <strong>Описание:</strong> Современный отзывчивый лендинг с темной
+              темой и компонентной архитектурой.
+            </p>
+
+            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+              <p class="font-semibold mb-2">Технологии:</p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Next.js 14</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >Tailwind CSS</span
+                >
+                <span
+                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                  >TypeScript</span
+                >
+              </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Функциональность:</h4>
+            <ul class="space-y-2 list-disc list-inside mb-4">
+              <li>Темная тема и адаптивный дизайн</li>
+              <li>Компонентная архитектура для удобства разработки</li>
+              <li>SEO-оптимизация и высокая производительность</li>
+            </ul>
+
+            <div class="mt-4">
+              <a
+                href="https://next-js-landing-page-seven.vercel.app/"
+                class="text-primary hover:underline"
+                target="_blank"
+              >
+                Открыть демо
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section class="mb-16 section-fade-in">
+        <h2 class="mb-8 text-section-title font-section-title section-header">
+          Навыки
+        </h2>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <!-- Programming Languages -->
+          <div
+            class="glass-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover overflow-hidden"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 mr-4 rounded-full bg-primary/10 flex items-center justify-center"
+              >
+                <i class="fas fa-code text-primary text-xl"></i>
+              </div>
+              <h3 class="text-card-title font-card-title flex-1">
+                Языки программирования
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-y-3">
+              <div class="flex items-center gap-2">
+                <i class="fab fa-js text-blue-500"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-react text-blue-500"></i>
+                <span>TypeScript</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-php text-purple-500"></i>
+                <span>PHP</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-python text-green-500"></i>
+                <span>Python</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div
+            class="glass-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover overflow-hidden"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 mr-4 rounded-full bg-primary/10 flex items-center justify-center"
+              >
+                <i class="fas fa-database text-primary text-xl"></i>
+              </div>
+              <h3 class="text-card-title font-card-title flex-1">
+                Базы данных
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-y-3">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-database text-blue-500"></i>
+                <span>PostgreSQL</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-database text-blue-500"></i>
+                <span>MySQL</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-leaf text-green-500"></i>
+                <span>MongoDB</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-bolt text-red-500"></i>
+                <span>Redis</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frameworks / Platforms -->
+          <div
+            class="glass-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover overflow-hidden"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 mr-4 rounded-full bg-primary/10 flex items-center justify-center"
+              >
+                <i class="fas fa-layer-group text-primary text-xl"></i>
+              </div>
+              <h3 class="text-card-title font-card-title flex-1">
+                Фреймворки / Платформы
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-y-3">
+              <div class="flex items-center gap-2">
+                <i class="fab fa-react text-blue-500"></i>
+                <span>ReactJs</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-node-js text-green-600"></i>
+                <span>NodeJs</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-php text-purple-500"></i>
+                <span>PHP</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-bootstrap text-purple-600"></i>
+                <span>Bootstrap</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-paint-brush text-blue-400"></i>
+                <span>Material UI</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-css3 text-blue-500"></i>
+                <span>Tailwind CSS</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-react text-blue-500"></i>
+                <span>NextJs</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-node-js text-green-600"></i>
+                <span>ExpressJS</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-laravel text-red-600"></i>
+                <span>Laravel</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-wordpress text-blue-700"></i>
+                <span>WordPress</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other Skills -->
+          <div
+            class="glass-card p-6 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover overflow-hidden"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 mr-4 rounded-full bg-primary/10 flex items-center justify-center"
+              >
+                <i class="fas fa-brain text-primary text-xl"></i>
+              </div>
+              <h3 class="text-card-title font-card-title flex-1">
+                Другие навыки
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-1 gap-y-3">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-sitemap text-blue-600"></i>
+                <span>SOLID и шаблоны проектирования</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-rocket text-blue-600"></i>
+                <span>CI/CD (Github Actions, Gitlab)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-aws text-orange-500"></i>
+                <span>AWS сервисы</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fab fa-docker text-blue-600"></i>
+                <span>Linux, Docker и Kubernetes</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-chart-line text-blue-600"></i>
+                <span>Мониторинг и логирование</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-code-branch text-blue-600"></i>
+                <span>GitOps (Helm, ArgoCD)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hobbies Section -->
+      <section class="mb-16 section-fade-in">
+        <h2 class="mb-8 text-section-title font-section-title section-header">
+          Хобби и интересы
+        </h2>
+        <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+          <div
+            class="flex flex-col items-center p-5 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover relative overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-primary/5 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"
+            ></div>
+            <div
+              class="w-16 h-16 mb-4 rounded-full bg-primary/10 flex items-center justify-center relative"
+            >
+              <i class="text-3xl fas fa-camera text-primary"></i>
+            </div>
+            <span class="text-lg font-medium relative">Фотография</span>
+            <p class="mt-2 text-sm text-accent text-center relative">
+              Уличная и пейзажная фотография, съемка архитектуры
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col items-center p-5 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover relative overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-primary/5 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"
+            ></div>
+            <div
+              class="w-16 h-16 mb-4 rounded-full bg-primary/10 flex items-center justify-center relative"
+            >
+              <i class="text-3xl fas fa-book text-primary"></i>
+            </div>
+            <span class="text-lg font-medium relative">Чтение</span>
+            <p class="mt-2 text-sm text-accent text-center relative">
+              Научная фантастика, технические книги и биографии
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col items-center p-5 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover relative overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-primary/5 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"
+            ></div>
+            <div
+              class="w-16 h-16 mb-4 rounded-full bg-primary/10 flex items-center justify-center relative"
+            >
+              <i class="text-3xl fas fa-hiking text-primary"></i>
+            </div>
+            <span class="text-lg font-medium relative">Туризм</span>
+            <p class="mt-2 text-sm text-accent text-center relative">
+              Походы в горы и исследование новых мест
+            </p>
+          </div>
+
+          <div
+            class="flex flex-col items-center p-5 rounded-lg shadow-md bg-card dark:bg-dark-card card-hover relative overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-primary/5 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom"
+            ></div>
+            <div
+              class="w-16 h-16 mb-4 rounded-full bg-primary/10 flex items-center justify-center relative"
+            >
+              <i class="text-3xl fas fa-headphones text-primary"></i>
+            </div>
+            <span class="text-lg font-medium relative">Музыка</span>
+            <p class="mt-2 text-sm text-accent text-center relative">
+              Джаз, классическая музыка и современный рок
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="py-6 text-center text-sm text-accent border-t border-border dark:border-dark-border"
+      >
+        <p>© 2025 Нгуен Куанг Туан. Все права защищены.</p>
+      </footer>
+    </div>
+  </body>
+</html>
