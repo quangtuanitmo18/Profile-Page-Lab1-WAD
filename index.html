@@ -284,9 +284,14 @@
                 <i class="mr-2 fas fa-phone text-primary"></i>+7 953 362 67 95
               </p>
               <p>
+                <i class="mr-2 fab fa-telegram text-primary"></i
+                >@quangtuanitmo18
+              </p>
+              <p>
                 <i class="mr-2 fas fa-envelope text-primary"></i
                 >quangtuanitmo18@gmail.com
               </p>
+
               <div class="flex justify-center gap-4 mt-4 md:justify-start">
                 <a
                   href="https://github.com/quangtuanitmo18"
@@ -323,15 +328,15 @@
           О себе
         </h2>
         <p class="mb-4">
-          Full-stack разработчик с двухлетним опытом и страстью к созданию
-          интуитивных веб-приложений. Моя цель — соединять технические знания с
-          пользовательскими потребностями, создавая решения, которые
-          действительно работают. В своей работе я стараюсь достичь идеального
-          баланса между производительностью, эстетикой и функциональностью.
+          Full-stack разработчик из Вьетнама с двухлетним опытом работы. В
+          настоящее время являюсь студентом первого курса магистратуры в
+          Университете ИТМО по специальности "Информационная безопасность".
+          Увлечен созданием интуитивных веб-приложений и постоянно стремлюсь
+          расширять свои технические знания.
         </p>
         <p class="mb-4">
-          Постоянно изучаю новые технологии и методологии разработки, чтобы
-          применять актуальные подходы в своих проектах. Обладаю хорошими
+          В своей работе стараюсь достичь идеального баланса между
+          производительностью, эстетикой и функциональностью. Обладаю хорошими
           навыками коммуникации и работы в команде, что помогает эффективно
           взаимодействовать с коллегами и достигать поставленных целей.
         </p>
@@ -625,7 +630,7 @@
         <!-- Education Block 1 -->
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div
-            class="p-6 mb-6 rounded-lg shadow-md bg-card dark:bg-dark-card md:col-span-1 card-hover"
+            class="p-6 rounded-lg shadow-md bg-card dark:bg-dark-card md:col-span-1 card-hover h-full flex flex-col"
           >
             <div
               class="flex flex-col md:flex-row md:items-center md:justify-between"
@@ -642,7 +647,7 @@
               >
             </div>
 
-            <div class="mt-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+            <div class="mt-4 p-3 rounded bg-gray-50 dark:bg-gray-800 flex-grow">
               <p><strong>Специальность:</strong> Информационная безопасность</p>
               <p class="mt-1"><strong>Средний балл:</strong> 4.8/5</p>
             </div>
@@ -650,7 +655,7 @@
 
           <!-- Education Block 2 -->
           <div
-            class="p-6 rounded-lg shadow-md bg-card dark:bg-dark-card md:col-span-1 card-hover"
+            class="p-6 rounded-lg shadow-md bg-card dark:bg-dark-card md:col-span-1 card-hover h-full flex flex-col"
           >
             <div
               class="flex flex-col md:flex-row md:items-center md:justify-between"
@@ -667,7 +672,7 @@
               >
             </div>
 
-            <div class="mt-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+            <div class="mt-4 p-3 rounded bg-gray-50 dark:bg-gray-800 flex-grow">
               <p><strong>Специальность:</strong> Информационная безопасность</p>
             </div>
           </div>
@@ -716,7 +721,7 @@
           </button>
 
           <!-- Slide Container with Transition Effect -->
-          <div class="overflow-hidden">
+          <div class="overflow-hidden py-4">
             <div
               class="transform transition-transform duration-500 ease-in-out"
               :style="{ 'transform': `translateX(-${currentSlide * 100}%)` }"
@@ -1135,10 +1140,12 @@
           style="display: none"
         >
           <div
-            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col"
             @click.stop
           >
-            <div class="flex justify-between items-center mb-4">
+            <div
+              class="flex justify-between items-center p-6 border-b border-border dark:border-dark-border sticky top-0 bg-card dark:bg-dark-card z-10"
+            >
               <h3 class="text-xl font-bold text-primary">
                 Система заказов по QR-коду
               </h3>
@@ -1150,71 +1157,77 @@
               </button>
             </div>
 
-            <p class="mb-4">
-              <strong>Описание:</strong> Решение для цифровизации ресторанного
-              бизнеса с использованием QR-кодов, оптимизирующее процесс заказа и
-              управления для кафе и ресторанов.
-            </p>
-
-            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="font-semibold mb-2">Технологии:</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Fastify</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Prisma</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >TypeScript</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >SQLite</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >WebSockets</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Next.js</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Shadcn/ui</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >React Query</span
-                >
-              </div>
-            </div>
-
-            <h4 class="font-semibold mb-2">Ключевые функции:</h4>
-            <ul class="space-y-2 list-disc list-inside mb-4">
-              <li>Управление меню, заказами, персоналом и аналитика доходов</li>
-              <li>Интерактивное онлайн-меню с детальным представлением блюд</li>
-              <li>Система QR-кодов для быстрого оформления заказов</li>
-              <li>SEO-оптимизация с Next.js</li>
-              <li>Обработка заказов в реальном времени через WebSockets</li>
-            </ul>
-
-            <div class="flex items-center gap-4">
-              <a
-                href="https://164181.msk.web.highserver.ru/en/login"
-                class="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Открыть демо
-              </a>
-              <p class="text-gray-500 text-bold">
-                аккаунт - (admin@order.com / 123456)
+            <div class="p-6 overflow-y-auto">
+              <p class="mb-4">
+                <strong>Описание:</strong> Решение для цифровизации ресторанного
+                бизнеса с использованием QR-кодов, оптимизирующее процесс заказа
+                и управления для кафе и ресторанов.
               </p>
+
+              <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="font-semibold mb-2">Технологии:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Fastify</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Prisma</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >SQLite</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >WebSockets</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Next.js</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Shadcn/ui</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >React Query</span
+                  >
+                </div>
+              </div>
+
+              <h4 class="font-semibold mb-2">Ключевые функции:</h4>
+              <ul class="space-y-2 list-disc list-inside mb-4">
+                <li>
+                  Управление меню, заказами, персоналом и аналитика доходов
+                </li>
+                <li>
+                  Интерактивное онлайн-меню с детальным представлением блюд
+                </li>
+                <li>Система QR-кодов для быстрого оформления заказов</li>
+                <li>SEO-оптимизация с Next.js</li>
+                <li>Обработка заказов в реальном времени через WebSockets</li>
+              </ul>
+
+              <div class="flex items-center gap-4">
+                <a
+                  href="https://164181.msk.web.highserver.ru/en/login"
+                  class="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Открыть демо
+                </a>
+                <p class="text-gray-500 text-bold">
+                  аккаунт - (admin@order.com / 123456)
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1228,10 +1241,12 @@
           style="display: none"
         >
           <div
-            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col"
             @click.stop
           >
-            <div class="flex justify-between items-center mb-4">
+            <div
+              class="flex justify-between items-center p-6 border-b border-border dark:border-dark-border sticky top-0 bg-card dark:bg-dark-card z-10"
+            >
               <h3 class="text-xl font-bold text-primary">Клон Shopee</h3>
               <button
                 @click="openProject4 = false"
@@ -1241,60 +1256,65 @@
               </button>
             </div>
 
-            <p class="mb-4">
-              <strong>Описание:</strong> Платформа электронной коммерции с
-              полнофункциональной системой управления товарами и пользователями.
-            </p>
+            <div class="p-6 overflow-y-auto">
+              <p class="mb-4">
+                <strong>Описание:</strong> Платформа электронной коммерции с
+                полнофункциональной системой управления товарами и
+                пользователями.
+              </p>
 
-            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="font-semibold mb-2">Технологии:</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >ReactJs</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >TypeScript</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >TailwindCSS</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >React Query</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Vitest</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Storybook</span
-                >
+              <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="font-semibold mb-2">Технологии:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >ReactJs</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >TailwindCSS</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >React Query</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Vitest</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Storybook</span
+                  >
+                </div>
               </div>
-            </div>
 
-            <h4 class="font-semibold mb-2">Функциональность:</h4>
-            <ul class="space-y-2 list-disc list-inside mb-4">
-              <li>JWT-аутентификация с автоматическим обновлением токенов</li>
-              <li>Управление товарами с пагинацией, фильтрацией и поиском</li>
-              <li>Оптимизированное управление состоянием через React Query</li>
-              <li>Разделение кода и оптимизация производительности</li>
-              <li>SEO-улучшения с React Helmet</li>
-              <li>Тестирование компонентов с Vitest и Storybook</li>
-            </ul>
+              <h4 class="font-semibold mb-2">Функциональность:</h4>
+              <ul class="space-y-2 list-disc list-inside mb-4">
+                <li>JWT-аутентификация с автоматическим обновлением токенов</li>
+                <li>Управление товарами с пагинацией, фильтрацией и поиском</li>
+                <li>
+                  Оптимизированное управление состоянием через React Query
+                </li>
+                <li>Разделение кода и оптимизация производительности</li>
+                <li>SEO-улучшения с React Helmet</li>
+                <li>Тестирование компонентов с Vitest и Storybook</li>
+              </ul>
 
-            <div class="mt-4">
-              <a
-                href="https://shopee-clone-ts-nu.vercel.app/"
-                class="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Открыть демо
-              </a>
+              <div class="mt-4">
+                <a
+                  href="https://shopee-clone-ts-nu.vercel.app/"
+                  class="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Открыть демо
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1308,10 +1328,12 @@
           style="display: none"
         >
           <div
-            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col"
             @click.stop
           >
-            <div class="flex justify-between items-center mb-4">
+            <div
+              class="flex justify-between items-center p-6 border-b border-border dark:border-dark-border sticky top-0 bg-card dark:bg-dark-card z-10"
+            >
               <h3 class="text-xl font-bold text-primary">Клон Twitter</h3>
               <button
                 @click="openProject5 = false"
@@ -1321,70 +1343,72 @@
               </button>
             </div>
 
-            <p class="mb-4">
-              <strong>Описание:</strong> Бэкенд социальной платформы с функциями
-              публикации, взаимодействия и медиа-контента.
-            </p>
+            <div class="p-6 overflow-y-auto">
+              <p class="mb-4">
+                <strong>Описание:</strong> Бэкенд социальной платформы с
+                функциями публикации, взаимодействия и медиа-контента.
+              </p>
 
-            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="font-semibold mb-2">Технологии:</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >ExpressJS</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >TypeScript</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >MongoDB</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >RESTful API</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >AWS S3</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >AWS SES</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >OAuth2</span
-                >
+              <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="font-semibold mb-2">Технологии:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >ExpressJS</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >MongoDB</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >RESTful API</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >AWS S3</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >AWS SES</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >OAuth2</span
+                  >
+                </div>
               </div>
-            </div>
 
-            <h4 class="font-semibold mb-2">Функциональность:</h4>
-            <ul class="space-y-2 list-disc list-inside mb-4">
-              <li>JWT-аутентификация с интеграцией OAuth2 через Google</li>
-              <li>
-                Конвертация видео в HLS формат для адаптивного стриминга с
-                FFmpeg
-              </li>
-              <li>
-                Хранение медиафайлов в AWS S3 и отправка уведомлений через SES
-              </li>
-              <li>
-                CI/CD с GitHub Actions для автоматизации тестирования и
-                развертывания
-              </li>
-            </ul>
+              <h4 class="font-semibold mb-2">Функциональность:</h4>
+              <ul class="space-y-2 list-disc list-inside mb-4">
+                <li>JWT-аутентификация с интеграцией OAuth2 через Google</li>
+                <li>
+                  Конвертация видео в HLS формат для адаптивного стриминга с
+                  FFmpeg
+                </li>
+                <li>
+                  Хранение медиафайлов в AWS S3 и отправка уведомлений через SES
+                </li>
+                <li>
+                  CI/CD с GitHub Actions для автоматизации тестирования и
+                  развертывания
+                </li>
+              </ul>
 
-            <div class="mt-4">
-              <a
-                href="https://github.com/quangtuanitmo18/nodejs-twitter"
-                class="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Репозиторий GitHub
-              </a>
+              <div class="mt-4">
+                <a
+                  href="https://github.com/quangtuanitmo18/nodejs-twitter"
+                  class="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Репозиторий GitHub
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1398,10 +1422,12 @@
           style="display: none"
         >
           <div
-            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col"
             @click.stop
           >
-            <div class="flex justify-between items-center mb-4">
+            <div
+              class="flex justify-between items-center p-6 border-b border-border dark:border-dark-border sticky top-0 bg-card dark:bg-dark-card z-10"
+            >
               <h3 class="text-xl font-bold text-primary">
                 Viettel Digital Talent Cloud
               </h3>
@@ -1413,65 +1439,71 @@
               </button>
             </div>
 
-            <p class="mb-4">
-              <strong>Описание:</strong> Руководство по созданию облачной среды
-              разработки на базе Kubernetes с контроллерами, операторами и
-              интеграцией Eclipse Che.
-            </p>
+            <div class="p-6 overflow-y-auto">
+              <p class="mb-4">
+                <strong>Описание:</strong> Руководство по созданию облачной
+                среды разработки на базе Kubernetes с контроллерами, операторами
+                и интеграцией Eclipse Che.
+              </p>
 
-            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="font-semibold mb-2">Технологии:</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Kubernetes</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Helm</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >GitOps</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Eclipse Che</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Dex</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Kind</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Minikube</span
-                >
+              <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="font-semibold mb-2">Технологии:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Kubernetes</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Helm</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >GitOps</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Eclipse Che</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Dex</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Kind</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Minikube</span
+                  >
+                </div>
               </div>
-            </div>
 
-            <h4 class="font-semibold mb-2">Ключевые компоненты:</h4>
-            <ul class="space-y-2 list-disc list-inside mb-4">
-              <li>Разработка кастомных контроллеров Kubernetes и операторов</li>
-              <li>Настройка DevWorkspace Operator с интеграцией Eclipse Che</li>
-              <li>
-                Безопасное развертывание в публичном кластере с TLS и OIDC
-              </li>
-              <li>Оптимизация конфигурации сети и управления ресурсами</li>
-            </ul>
+              <h4 class="font-semibold mb-2">Ключевые компоненты:</h4>
+              <ul class="space-y-2 list-disc list-inside mb-4">
+                <li>
+                  Разработка кастомных контроллеров Kubernetes и операторов
+                </li>
+                <li>
+                  Настройка DevWorkspace Operator с интеграцией Eclipse Che
+                </li>
+                <li>
+                  Безопасное развертывание в публичном кластере с TLS и OIDC
+                </li>
+                <li>Оптимизация конфигурации сети и управления ресурсами</li>
+              </ul>
 
-            <div class="mt-4">
-              <a
-                href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2"
-                class="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Репозиторий GitHub
-              </a>
+              <div class="mt-4">
+                <a
+                  href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2"
+                  class="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Репозиторий GitHub
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1485,10 +1517,12 @@
           style="display: none"
         >
           <div
-            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col"
             @click.stop
           >
-            <div class="flex justify-between items-center mb-4">
+            <div
+              class="flex justify-between items-center p-6 border-b border-border dark:border-dark-border sticky top-0 bg-card dark:bg-dark-card z-10"
+            >
               <h3 class="text-xl font-bold text-primary">
                 Viettel Digital Talent Phase 1
               </h3>
@@ -1500,77 +1534,79 @@
               </button>
             </div>
 
-            <p class="mb-4">
-              <strong>Описание:</strong> Промежуточные и итоговые задания для
-              первой фазы программы Viettel Digital Talent, проверяющие знания и
-              навыки кандидатов.
-            </p>
+            <div class="p-6 overflow-y-auto">
+              <p class="mb-4">
+                <strong>Описание:</strong> Промежуточные и итоговые задания для
+                первой фазы программы Viettel Digital Talent, проверяющие знания
+                и навыки кандидатов.
+              </p>
 
-            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="font-semibold mb-2">Технологии:</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Docker</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Kubernetes</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Ansible</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Vagrant</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Helm</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Prometheus</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Grafana</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >CI/CD</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >ArgoCD</span
-                >
+              <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="font-semibold mb-2">Технологии:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Docker</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Kubernetes</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Ansible</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Vagrant</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Helm</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Prometheus</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Grafana</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >CI/CD</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >ArgoCD</span
+                  >
+                </div>
               </div>
-            </div>
 
-            <h4 class="font-semibold mb-2">Функциональность:</h4>
-            <ul class="space-y-2 list-disc list-inside mb-4">
-              <li>Разработка веб-приложения с трехуровневой архитектурой</li>
-              <li>
-                Развертывание веб-приложения с использованием инструментов
-                DevOps
-              </li>
-              <li>
-                Настройка мониторинга и логирования для отслеживания
-                производительности
-              </li>
-              <li>Внедрение непрерывной интеграции и доставки (CI/CD)</li>
-            </ul>
+              <h4 class="font-semibold mb-2">Функциональность:</h4>
+              <ul class="space-y-2 list-disc list-inside mb-4">
+                <li>Разработка веб-приложения с трехуровневой архитектурой</li>
+                <li>
+                  Развертывание веб-приложения с использованием инструментов
+                  DevOps
+                </li>
+                <li>
+                  Настройка мониторинга и логирования для отслеживания
+                  производительности
+                </li>
+                <li>Внедрение непрерывной интеграции и доставки (CI/CD)</li>
+              </ul>
 
-            <div class="mt-4">
-              <a
-                href="https://github.com/quangtuanitmo18/Viettel-Digital-Talent-2024"
-                class="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Репозиторий GitHub
-              </a>
+              <div class="mt-4">
+                <a
+                  href="https://github.com/quangtuanitmo18/Viettel-Digital-Talent-2024"
+                  class="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Репозиторий GitHub
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1584,10 +1620,12 @@
           style="display: none"
         >
           <div
-            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-auto p-6"
+            class="bg-card dark:bg-dark-card rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col"
             @click.stop
           >
-            <div class="flex justify-between items-center mb-4">
+            <div
+              class="flex justify-between items-center p-6 border-b border-border dark:border-dark-border sticky top-0 bg-card dark:bg-dark-card z-10"
+            >
               <h3 class="text-xl font-bold text-primary">
                 Modern Landing Page
               </h3>
@@ -1599,45 +1637,47 @@
               </button>
             </div>
 
-            <p class="mb-4">
-              <strong>Описание:</strong> Современный отзывчивый лендинг с темной
-              темой и компонентной архитектурой.
-            </p>
+            <div class="p-6 overflow-y-auto">
+              <p class="mb-4">
+                <strong>Описание:</strong> Современный отзывчивый лендинг с
+                темной темой и компонентной архитектурой.
+              </p>
 
-            <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
-              <p class="font-semibold mb-2">Технологии:</p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Next.js 14</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >Tailwind CSS</span
-                >
-                <span
-                  class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >TypeScript</span
-                >
+              <div class="mb-4 p-3 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="font-semibold mb-2">Технологии:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Next.js 14</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >Tailwind CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                    >TypeScript</span
+                  >
+                </div>
               </div>
-            </div>
 
-            <h4 class="font-semibold mb-2">Функциональность:</h4>
-            <ul class="space-y-2 list-disc list-inside mb-4">
-              <li>Темная тема и адаптивный дизайн</li>
-              <li>Компонентная архитектура для удобства разработки</li>
-              <li>SEO-оптимизация и высокая производительность</li>
-            </ul>
+              <h4 class="font-semibold mb-2">Функциональность:</h4>
+              <ul class="space-y-2 list-disc list-inside mb-4">
+                <li>Темная тема и адаптивный дизайн</li>
+                <li>Компонентная архитектура для удобства разработки</li>
+                <li>SEO-оптимизация и высокая производительность</li>
+              </ul>
 
-            <div class="mt-4">
-              <a
-                href="https://next-js-landing-page-seven.vercel.app/"
-                class="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Открыть демо
-              </a>
+              <div class="mt-4">
+                <a
+                  href="https://next-js-landing-page-seven.vercel.app/"
+                  class="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Открыть демо
+                </a>
+              </div>
             </div>
           </div>
         </div>
