@@ -1,0 +1,234 @@
+const translations = {
+  // — Nav —
+  nav_about:    { ru: 'О себе',    en: 'About',      vi: 'Giới thiệu' },
+  nav_exp:      { ru: 'Опыт',      en: 'Experience',  vi: 'Kinh nghiệm' },
+  nav_projects: { ru: 'Проекты',   en: 'Projects',    vi: 'Dự án' },
+  nav_skills:   { ru: 'Навыки',    en: 'Skills',      vi: 'Kỹ năng' },
+
+  // — Hero —
+  hero_name:    { ru: 'Нгуен Куанг\nТуан', en: 'Nguyen Quang\nTuan', vi: 'Nguyễn Quang\nTuấn' },
+  hero_role:    { ru: 'Full-Stack Engineer · 3+ года опыта', en: 'Full-Stack Engineer · 3+ years', vi: 'Full-Stack Engineer · 3+ năm' },
+  hero_status:  { ru: 'Открыт к предложениям', en: 'Open to opportunities', vi: 'Sẵn sàng nhận việc' },
+  hero_location: { ru: 'Санкт-Петербург, Россия', en: 'Saint Petersburg, Russia', vi: 'Saint Petersburg, Nga' },
+  hero_cv:      { ru: 'Скачать резюме', en: 'Download CV', vi: 'Tải CV' },
+  hero_stat1:   { ru: 'компании',  en: 'companies',   vi: 'công ty' },
+  hero_stat2:   { ru: 'проектов',  en: 'projects',    vi: 'dự án' },
+  hero_cta1:    { ru: 'Смотреть проекты', en: 'View Projects', vi: 'Xem dự án' },
+  hero_cta2:    { ru: 'Связаться', en: 'Get in touch', vi: 'Liên hệ' },
+
+  // — About —
+  about_title:  { ru: 'О себе',   en: 'About Me',    vi: 'Về tôi' },
+  about_p1: {
+    ru: 'Full-stack разработчик из Вьетнама с двухлетним опытом работы. В настоящее время являюсь студентом первого курса магистратуры в Университете ИТМО по специальности "Информационная безопасность". Увлечен созданием интуитивных веб-приложений и постоянно стремлюсь расширять свои технические знания.',
+    en: 'Full-stack developer from Vietnam with two years of experience. I am currently a first-year Master\'s student at ITMO University, majoring in Information Security. I am passionate about creating intuitive web applications and constantly strive to expand my technical knowledge.',
+    vi: 'Lập trình viên Full-stack đến từ Việt Nam với hai năm kinh nghiệm. Hiện tại, tôi đang là sinh viên năm nhất hệ Thạc sĩ tại Đại học ITMO chuyên ngành An toàn thông tin. Tôi đam mê xây dựng các ứng dụng web trực quan và không ngừng nỗ lực mở rộng kiến thức kỹ thuật của mình.'
+  },
+  about_p2: {
+    ru: 'В своей работе стараюсь достичь идеального баланса между производительностью, эстетикой и функциональностью. Обладаю хорошими навыками коммуникации и работы в команде, что помогает эффективно взаимодействовать с коллегами и достигать поставленных целей.',
+    en: 'In my work, I strive to achieve the perfect balance between performance, aesthetics, and functionality. I have excellent communication and teamwork skills, which helps me effectively collaborate with colleagues and achieve our set goals.',
+    vi: 'Trong công việc, tôi luôn cố gắng đạt được sự cân bằng hoàn hảo giữa hiệu suất, tính thẩm mỹ và chức năng. Tôi có kỹ năng giao tiếp và làm việc nhóm cực tốt, giúp tôi tương tác hiệu quả với đồng nghiệp và hoàn thành xuất sắc các mục tiêu đề ra.'
+  },
+  about_quote: {
+    ru: '"Функция хорошего программного обеспечения — делать сложное простым." – Грейди Буч',
+    en: '"The function of good software is to make the complex appear to be simple." – Grady Booch',
+    vi: '"Chức năng của một phần mềm tốt là làm cho những điều phức tạp trở nên đơn giản." – Grady Booch'
+  },
+  about_edu:      { ru: 'Образование', en: 'Education',  vi: 'Học vấn' },
+  about_uni:      { ru: 'Университет ИТМО', en: 'ITMO University', vi: 'Đại học ITMO' },
+  about_master:   { ru: 'Магистратура', en: "Master's",   vi: 'Thạc sĩ' },
+  about_bachelor: { ru: 'Бакалавриат', en: "Bachelor's",  vi: 'Cử nhân' },
+  about_contacts: { ru: 'Контакты',    en: 'Contact',     vi: 'Liên hệ' },
+
+  // — Experience —
+  exp_title: { ru: 'Опыт работы', en: 'Work Experience', vi: 'Kinh nghiệm làm việc' },
+
+  // Job 0: NAMIS
+  job0_company: { ru: 'АНО «НАМИС»', en: 'ANO "NAMIS"', vi: 'ANO "NAMIS"' },
+  job0_role:    { ru: 'Frontend Developer', en: 'Frontend Developer', vi: 'Frontend Developer' },
+  job0_date:    { ru: '05/2025 — наст. время', en: '05/2025 — present', vi: '05/2025 — hiện tại' },
+  job0_desc: {
+    ru: 'Разработка и поддержка фронтенд-приложений для Национальной ассоциации масштабных инфраструктурных систем.',
+    en: 'Development and maintenance of frontend applications for the National Association of Large-Scale Infrastructure Systems.',
+    vi: 'Phát triển và bảo trì ứng dụng frontend cho Hiệp hội Hệ thống Hạ tầng Quy mô lớn Quốc gia.'
+  },
+  job0_duties: {
+    ru: ['Разрабатываю внутренние веб-приложения для сотрудников (управление учетными записями, управление персоналом, учет звонков, документооборот и управление сертификатами и др.)', 'Разрабатываю новый функционал согласно требованиям', 'Участвую в проектировании технических и архитектурных решений', 'Занимаюсь рефакторингом и оптимизацией существующего кода', 'Провожу код-ревью младшим разработчикам'],
+    en: ['Building internal web applications for employees (account management, HR management, call tracking, document workflow, certificate management, etc.)', 'Developing new features according to requirements', 'Participating in designing technical and architectural solutions', 'Refactoring and optimizing the existing codebase', 'Conducting code reviews for junior developers'],
+    vi: ['Xây dựng ứng dụng web nội bộ cho nhân viên (quản lý tài khoản, quản lý nhân sự, quản lý cuộc gọi, luồng tài liệu, quản lý chứng chỉ, v.v.)', 'Phát triển tính năng mới theo yêu cầu', 'Tham gia thiết kế giải pháp kỹ thuật và kiến trúc', 'Refactoring và tối ưu hóa mã nguồn hiện có', 'Review code cho các nhà phát triển junior']
+  },
+
+  // Job 1: Enghance
+  job1_role: {
+    ru: 'Full-stack разработчик (удаленно)',
+    en: 'Full-stack Developer (remote)',
+    vi: 'Full-stack Developer (remote)'
+  },
+  job1_desc: {
+    ru: 'EdTech-стартап, предлагающий курсы английского языка через платформы самообучения для вьетнамских студентов.',
+    en: 'EdTech startup offering English language courses through self-learning platforms for Vietnamese students.',
+    vi: 'Startup EdTech cung cấp khóa học tiếng Anh qua nền tảng tự học dành cho sinh viên Việt Nam.'
+  },
+  job1_duties: {
+    ru: ['Разрабатывал и развертывал проект (фронтенд и бэкенд)', 'Использовал сервисы AWS (EC2, ECS, RDS, S3, SES, CloudFront)', 'Разрабатывал и внедрял CI/CD процессы', 'Внедрял систему публикации/подписки для межкомпонентного взаимодействия', 'Интегрировал механизм очередей задач для оптимизации приложения', 'Создавал лендинги на Webflow и внутренние инструменты с Retool', 'Проводил код-ревью и осуществлял техническое наставничество для команды'],
+    en: ['Developed and deployed the project (frontend and backend)', 'Utilized AWS services (EC2, ECS, RDS, S3, SES, CloudFront)', 'Designed and implemented CI/CD processes', 'Implemented a pub/sub system for inter-component communication', 'Integrated a task queue mechanism for application optimization', 'Created landing pages on Webflow and internal tools with Retool', 'Conducted code reviews and provided technical mentoring for the team'],
+    vi: ['Phát triển và triển khai dự án (frontend và backend)', 'Sử dụng các dịch vụ AWS (EC2, ECS, RDS, S3, SES, CloudFront)', 'Thiết kế và triển khai quy trình CI/CD', 'Triển khai hệ thống pub/sub cho giao tiếp giữa các thành phần', 'Tích hợp cơ chế hàng đợi tác vụ để tối ưu hóa ứng dụng', 'Tạo landing page trên Webflow và công cụ nội bộ với Retool', 'Thực hiện code review và hướng dẫn kỹ thuật cho team']
+  },
+
+  // Job 2: Viettel
+  job2_role: {
+    ru: 'Стажёр по облачным технологиям (Программа цифровых талантов Viettel)',
+    en: 'Cloud Intern (Viettel Digital Talent Program)',
+    vi: 'Thực tập sinh Cloud (Chương trình Viettel Digital Talent)'
+  },
+  job2_desc: {
+    ru: 'Выбран из более чем 200 кандидатов для участия в программе цифровых талантов Viettel 2024, занял место в топ-10 в области облачных технологий.',
+    en: 'Selected from over 200 candidates for the Viettel Digital Talent 2024 program, ranked in the top 10 in Cloud technologies.',
+    vi: 'Được tuyển chọn từ hơn 200 ứng viên cho chương trình Viettel Digital Talent 2024, xếp hạng top 10 trong lĩnh vực Cloud.'
+  },
+  job2_duties: {
+    ru: ['Исследовал и развернул среду разработки в облаке на Kubernetes (Eclipse Che, DevWorkspace Controller)', 'Изучал основные концепции DevSecOps, включая CI/CD, виртуализацию, контейнеризацию, мониторинг, логирование, тестирование и др.', 'Применял популярные инструменты DevOps: Docker, Kubernetes, IAC (Ansible, Vagrant, Helm), мониторинг (Grafana, Prometheus), логирование (Fluentd, Logstash, Elasticsearch, Kibana), CI/CD (GitLab CI/CD, Jenkins), GitOps (ArgoCD)'],
+    en: ['Researched and deployed a cloud-based development environment on Kubernetes (Eclipse Che, DevWorkspace Controller)', 'Studied core DevSecOps concepts including CI/CD, virtualization, containerization, monitoring, logging, testing, etc.', 'Applied popular DevOps tools: Docker, Kubernetes, IaC (Ansible, Vagrant, Helm), monitoring (Grafana, Prometheus), logging (Fluentd, Logstash, Elasticsearch, Kibana), CI/CD (GitLab CI/CD, Jenkins), GitOps (ArgoCD)'],
+    vi: ['Nghiên cứu và triển khai môi trường phát triển trên nền tảng đám mây Kubernetes (Eclipse Che, DevWorkspace Controller)', 'Nghiên cứu các khái niệm cốt lõi DevSecOps bao gồm CI/CD, ảo hóa, container hóa, giám sát, logging, testing, v.v.', 'Áp dụng các công cụ DevOps phổ biến: Docker, Kubernetes, IaC (Ansible, Vagrant, Helm), monitoring (Grafana, Prometheus), logging (Fluentd, Logstash, Elasticsearch, Kibana), CI/CD (GitLab CI/CD, Jenkins), GitOps (ArgoCD)']
+  },
+  job2_cert: { ru: 'Сертификат', en: 'Certificate', vi: 'Chứng chỉ' },
+
+  // Job 3: Lectron
+  job3_role: {
+    ru: 'Стажёр по веб-разработке (удаленно)',
+    en: 'Web Development Intern (remote)',
+    vi: 'Thực tập sinh Web Development (remote)'
+  },
+  job3_desc: {
+    ru: 'Стартап-проект, предлагающий защиту от DDoS-атак для игровых серверов и бэкенд-приложений, которому доверяют тысячи пользователей.',
+    en: 'A startup project offering DDoS protection for gaming servers and backend applications, trusted by thousands of users.',
+    vi: 'Dự án startup cung cấp dịch vụ chống DDoS cho máy chủ game và ứng dụng backend, được hàng nghìn người dùng tin tưởng.'
+  },
+  job3_duties: {
+    ru: ['Разработал адаптивный и совместимый пользовательский интерфейс для различных устройств', 'Создал лендинг с использованием WordPress, интеграция плагинов для улучшения функциональности', 'Разработал несколько небольших функций для бэкенда и написание модульных тестов'],
+    en: ['Developed a responsive and cross-compatible user interface for various devices', 'Built a landing page using WordPress with plugin integration for enhanced functionality', 'Developed several small backend features and wrote unit tests'],
+    vi: ['Phát triển giao diện người dùng responsive và tương thích đa thiết bị', 'Xây dựng landing page bằng WordPress, tích hợp plugin để nâng cao chức năng', 'Phát triển một số tính năng nhỏ cho backend và viết unit test']
+  },
+
+  // — Projects —
+  proj_title: { ru: 'Проекты', en: 'Projects', vi: 'Dự án' },
+  proj_more:  { ru: 'Подробнее', en: 'Details', vi: 'Chi tiết' },
+
+  proj1_name: { ru: 'Система заказов по QR-коду', en: 'QR Code Ordering System', vi: 'Hệ thống đặt hàng QR Code' },
+  proj1_desc: {
+    ru: 'Комплексное цифровое решение: удобный заказ через QR-коды для гостей и обработка заказов в реальном времени для кухни.',
+    en: 'A comprehensive digital solution enabling seamless QR code ordering for customers and real-time order processing for restaurants.',
+    vi: 'Giải pháp số hóa toàn diện cho nhà hàng: mang đến trải nghiệm gọi món mượt mà qua QR code và trạm quản lý đơn hàng realtime cho nhà bếp.'
+  },
+  proj2_name: { ru: 'Клон Shopee', en: 'Shopee Clone', vi: 'Clone Shopee' },
+  proj2_desc: {
+    ru: 'Полнофункциональная e-commerce платформа, обеспечивающая бесшовный опыт онлайн-покупок от поиска товаров до безопасного оформления заказа.',
+    en: 'A full-featured e-commerce platform delivering a seamless shopping experience from browsing products to secure checkout.',
+    vi: 'Sàn thương mại điện tử hoàn chỉnh mang lại trải nghiệm mua sắm xuyên suốt từ tìm kiếm sản phẩm, quản lý giỏ hàng đến thanh toán an toàn.'
+  },
+  proj3_name: { ru: 'Клон Twitter', en: 'Twitter Clone', vi: 'Clone Twitter' },
+  proj3_desc: {
+    ru: 'Масштабируемая социальная сеть для микроблогинга, созданная для быстрых взаимодействий, обмена мыслями и трансляции стримов.',
+    en: 'A scalable microblogging network designed for real-time engagement, allowing users to share thoughts and stream live videos.',
+    vi: 'Hệ thống mạng xã hội vi mô (microblogging) được thiết kế cho sự tương tác tức thì, chia sẻ cảm nghĩ và phát sóng video trực tiếp.'
+  },
+  proj4_desc: {
+    ru: 'Облачная среда разработки корпоративного уровня, предоставляющая мгновенный доступ к настроенным рабочим пространствам прямо в браузере.',
+    en: 'An enterprise-grade cloud development environment providing developers with instantly accessible, secure workspaces straight from the browser.',
+    vi: 'Môi trường lập trình đám mây cấp doanh nghiệp, cung cấp các workspace được cấu hình sẵn, an toàn và truy cập ngay trên trình duyệt.'
+  },
+  proj5_desc: { 
+    ru: 'Высокодоступная архитектура приложения, полностью автоматизированная: от непрерывного развертывания до мониторинга системы.', 
+    en: 'A highly available web architecture completely automated from continuous deployment to robust system monitoring.', 
+    vi: 'Kiến trúc ứng dụng web ba lớp với độ sẵn sàng cao, được tự động hóa từ quá trình triển khai liên tục đến giám sát hệ thống chuyên sâu.' 
+  },
+  proj6_desc: {
+    ru: 'Современный лендинг, ориентированный на конверсию: впечатляющий дизайн, плавные анимации и полная адаптивность для вовлечения пользователей.',
+    en: 'A sleek, conversion-focused landing page featuring a modern aesthetic, smooth animations, and a fully responsive design.',
+    vi: 'Trang đích (landing page) hiện đại tập trung vào tỷ lệ chuyển đổi với giao diện cuốn hút, hiệu ứng tinh tế và tương thích mọi thiết bị.'
+  },
+
+  // Modal details
+  modal1_title: { ru: 'Система заказов по QR-коду', en: 'QR Code Ordering System', vi: 'Hệ thống đặt hàng QR Code' },
+  modal1_desc: {
+    ru: 'Решение для цифровизации ресторанного бизнеса с QR-кодами.',
+    en: 'A digital solution for restaurant businesses powered by QR codes.',
+    vi: 'Giải pháp số hóa nhà hàng sử dụng QR code.'
+  },
+  modal1_items: {
+    ru: ['Управление меню, заказами, персоналом, аналитика', 'Онлайн-меню с детальным представлением блюд', 'Обработка заказов в реальном времени (WebSockets)', 'SEO-оптимизация с Next.js'],
+    en: ['Menu, order, staff management & analytics', 'Online menu with detailed dish views', 'Real-time order processing (WebSockets)', 'SEO optimization with Next.js'],
+    vi: ['Quản lý menu, đơn hàng, nhân viên & phân tích', 'Menu online với hiển thị chi tiết món ăn', 'Xử lý đơn hàng realtime (WebSockets)', 'Tối ưu SEO với Next.js']
+  },
+  modal2_title: { ru: 'Клон Shopee', en: 'Shopee Clone', vi: 'Clone Shopee' },
+  modal2_desc: {
+    ru: 'E-commerce платформа с полнофункциональной системой управления.',
+    en: 'Full-featured e-commerce platform with comprehensive management.',
+    vi: 'Nền tảng thương mại điện tử đầy đủ tính năng.'
+  },
+  modal2_items: {
+    ru: ['JWT-аутентификация с автообновлением токенов', 'Пагинация, фильтрация, поиск', 'Code splitting и оптимизация производительности', 'Тестирование с Vitest и Storybook'],
+    en: ['JWT authentication with auto token refresh', 'Pagination, filtering, search', 'Code splitting and performance optimization', 'Testing with Vitest and Storybook'],
+    vi: ['JWT authentication với auto refresh token', 'Phân trang, lọc, tìm kiếm', 'Code splitting và tối ưu hiệu năng', 'Testing với Vitest và Storybook']
+  },
+  modal3_title: { ru: 'Клон Twitter', en: 'Twitter Clone', vi: 'Clone Twitter' },
+  modal3_desc: {
+    ru: 'Бэкенд социальной платформы с медиа-контентом.',
+    en: 'Social platform backend with rich media content support.',
+    vi: 'Backend nền tảng mạng xã hội hỗ trợ nội dung đa phương tiện.'
+  },
+  modal3_items: {
+    ru: ['JWT + OAuth2 (Google)', 'HLS-стриминг с FFmpeg', 'AWS S3/SES интеграция', 'CI/CD с GitHub Actions'],
+    en: ['JWT + OAuth2 (Google)', 'HLS streaming with FFmpeg', 'AWS S3/SES integration', 'CI/CD with GitHub Actions'],
+    vi: ['JWT + OAuth2 (Google)', 'HLS streaming với FFmpeg', 'Tích hợp AWS S3/SES', 'CI/CD với GitHub Actions']
+  },
+
+  // — Skills —
+  skills_title: { ru: 'Навыки', en: 'Skills', vi: 'Kỹ năng' },
+  skills_lang:  { ru: 'Языки',  en: 'Languages', vi: 'Ngôn ngữ' },
+
+  // — Hobbies —
+  hobby1: { ru: 'Фотография', en: 'Photography', vi: 'Nhiếp ảnh' },
+  hobby2: { ru: 'Чтение',     en: 'Reading',     vi: 'Đọc sách' },
+  hobby3: { ru: 'Туризм',     en: 'Travel',      vi: 'Du lịch' },
+  hobby4: { ru: 'Музыка',     en: 'Music',       vi: 'Âm nhạc' },
+
+  // — Footer —
+  footer_title: { ru: 'Заинтересованы?', en: 'Interested?', vi: 'Bạn quan tâm?' },
+  footer_desc: {
+    ru: 'Я открыт для новых возможностей и буду рад обсудить ваш проект или вакансию.',
+    en: "I'm open to new opportunities and would love to discuss your project or position.",
+    vi: 'Tôi luôn sẵn sàng cho những cơ hội mới và rất vui được trao đổi về dự án hoặc vị trí của bạn.'
+  },
+  footer_copy: { ru: '© 2025 Нгуен Куанг Туан', en: '© 2025 Nguyen Quang Tuan', vi: '© 2025 Nguyễn Quang Tuấn' },
+};
+
+function i18nSetup() {
+  return {
+    lang: localStorage.getItem('lang') || 'ru',
+    setLang(l) {
+      this.lang = l;
+      localStorage.setItem('lang', l);
+      document.documentElement.lang = l;
+    },
+    t(key) {
+      const entry = translations[key];
+      if (!entry) return key;
+      return entry[this.lang] || entry['ru'] || key;
+    },
+    tHtml(key) {
+      return this.t(key);
+    },
+    tList(key) {
+      const entry = translations[key];
+      if (!entry) return [];
+      return entry[this.lang] || entry['ru'] || [];
+    },
+    langLabel: { ru: 'RU', en: 'EN', vi: 'VI' },
+    langFlags: { ru: '🇷🇺', en: '🇬🇧', vi: '🇻🇳' },
+    get currentFlag() { return this.langFlags[this.lang]; },
+    get heroNameLines() {
+      const nameStr = this.t('hero_name');
+      return nameStr.split('\n');
+    }
+  };
+}
