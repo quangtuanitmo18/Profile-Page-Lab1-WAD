@@ -44,7 +44,7 @@ const translations = {
 
   // Job 0: NAMIS
   job0_company: { ru: 'АНО «НАМИС»', en: 'ANO "NAMIS"', vi: 'ANO "NAMIS"' },
-  job0_role:    { ru: 'Frontend Developer', en: 'Frontend Developer', vi: 'Frontend Developer' },
+  job0_role:    { ru: 'Frontend Developer · Россия', en: 'Frontend Developer · Russia', vi: 'Frontend Developer · Nga' },
   job0_date:    { ru: '05/2025 — наст. время', en: '05/2025 — present', vi: '05/2025 — hiện tại' },
   job0_desc: {
     ru: 'Разработка и поддержка фронтенд-приложений для Национальной ассоциации масштабных инфраструктурных систем.',
@@ -59,9 +59,9 @@ const translations = {
 
   // Job 1: Enghance
   job1_role: {
-    ru: 'Full-stack разработчик (удаленно)',
-    en: 'Full-stack Developer (remote)',
-    vi: 'Full-stack Developer (remote)'
+    ru: 'Full-stack разработчик (удаленно) · Вьетнам',
+    en: 'Full-stack Developer (remote) · Vietnam',
+    vi: 'Full-stack Developer (remote) · Việt Nam'
   },
   job1_desc: {
     ru: 'EdTech-стартап, предлагающий курсы английского языка через платформы самообучения для вьетнамских студентов.',
@@ -76,9 +76,9 @@ const translations = {
 
   // Job 2: Viettel
   job2_role: {
-    ru: 'Стажёр по облачным технологиям (Программа цифровых талантов Viettel)',
-    en: 'Cloud Intern (Viettel Digital Talent Program)',
-    vi: 'Thực tập sinh Cloud (Chương trình Viettel Digital Talent)'
+    ru: 'Стажёр по облачным технологиям (Программа цифровых талантов Viettel) · Вьетнам',
+    en: 'Cloud Intern (Viettel Digital Talent Program) · Vietnam',
+    vi: 'Thực tập sinh Cloud (Chương trình Viettel Digital Talent) · Việt Nam'
   },
   job2_desc: {
     ru: 'Выбран из более чем 200 кандидатов для участия в программе цифровых талантов Viettel 2024, занял место в топ-10 в области облачных технологий.',
@@ -94,9 +94,9 @@ const translations = {
 
   // Job 3: Lectron
   job3_role: {
-    ru: 'Стажёр по веб-разработке (удаленно)',
-    en: 'Web Development Intern (remote)',
-    vi: 'Thực tập sinh Web Development (remote)'
+    ru: 'Стажёр по веб-разработке (удаленно) · Вьетнам',
+    en: 'Web Development Intern (remote) · Vietnam',
+    vi: 'Thực tập sinh Web Development (remote) · Việt Nam'
   },
   job3_desc: {
     ru: 'Стартап-проект, предлагающий защиту от DDoS-атак для игровых серверов и бэкенд-приложений, которому доверяют тысячи пользователей.',
