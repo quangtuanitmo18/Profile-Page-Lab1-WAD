@@ -238,7 +238,8 @@
           <span class="text-base">📍</span>
           <span class="text-muted dark:text-muted-dark text-sm" x-text="t('hero_location')"></span>
         </div>
-        <a href="./cv.pdf" download class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent dark:bg-accent-dark text-white text-sm font-medium hover:opacity-90 transition reveal reveal-delay-3" style="border-radius:2px;">
+        <!-- CV download button (temporarily hidden) -->
+        <a href="./cv.pdf" download class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent dark:bg-accent-dark text-white text-sm font-medium hover:opacity-90 transition reveal reveal-delay-3" style="border-radius:2px; display:none;">
           <i class="fas fa-download text-xs"></i>
           <span x-text="t('hero_cv')"></span>
         </a>
@@ -402,129 +403,198 @@
 </section>
 
 <!-- Projects Section -->
-<section id="projects" class="py-20 bg-surface dark:bg-surface-dark border-y border-line dark:border-line-dark" x-data="{ modal: null }">
+<section id="projects" class="py-20 bg-surface dark:bg-surface-dark border-y border-line dark:border-line-dark" x-data="{ modal: null, slide: 0, totalSlides: 3 }">
   <div class="max-w-6xl mx-auto px-6">
     <p class="font-mono text-xs text-accent dark:text-accent-dark mb-2 tracking-widest uppercase reveal">03</p>
     <h2 class="font-heading text-3xl md:text-4xl font-bold mb-10 reveal" x-text="t('proj_title')"></h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col reveal">
-        <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold" x-text="t('proj1_name')"></h3>
-          <a href="https://github.com/quangtuanitmo18/QR-code-order" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
-        </div>
-        <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj1_desc')"></p>
-        <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="tech-tag">Next.js</span><span class="tech-tag">Fastify</span><span class="tech-tag">Prisma</span><span class="tech-tag">WebSocket</span><span class="tech-tag">TypeScript</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
-          <a href="https://164181.msk.web.highserver.ru/en/login" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">DEMO →</a>
-          <button @click="modal='qr'" class="text-xs text-muted hover:text-txt dark:hover:text-txt-dark transition" x-text="t('proj_more')"></button>
+    <!-- Carousel -->
+    <div class="relative">
+      <div class="overflow-hidden">
+        <div class="flex transition-transform duration-500 ease-in-out" :style="'transform: translateX(-' + (slide * 100) + '%)'">
+
+          <!-- Slide 1 -->
+          <div class="w-full flex-shrink-0 px-1">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-heading font-bold" x-text="t('proj1_name')"></h3>
+                  <a href="https://github.com/quangtuanitmo18/QR-code-order" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj1_desc')"></p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <span class="tech-tag">Next.js</span><span class="tech-tag">Fastify</span><span class="tech-tag">Prisma</span><span class="tech-tag">WebSocket</span><span class="tech-tag">TypeScript</span><span class="tech-tag">OpenAI</span><span class="tech-tag">ChromaDB</span>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
+                  <a href="https://qrorder.ru/en/tables/3?token=tbl-token-3" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">DEMO →</a>
+                  <button @click="modal='qr'" class="text-xs text-muted hover:text-txt dark:hover:text-txt-dark transition" x-text="t('proj_more')"></button>
+                </div>
+              </div>
+              <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-heading font-bold" x-text="t('proj7_name')"></h3>
+                  <a href="https://github.com/quangtuanitmo18/LearnHub" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj7_desc')"></p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <span class="tech-tag">Next.js 15</span><span class="tech-tag">NestJS</span><span class="tech-tag">Prisma</span><span class="tech-tag">Stripe</span><span class="tech-tag">OpenAI</span><span class="tech-tag">Socket.io</span>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
+                  <a href="https://learn-hub-tau.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">DEMO →</a>
+                  <button @click="modal='learnhub'" class="text-xs text-muted hover:text-txt dark:hover:text-txt-dark transition" x-text="t('proj_more')"></button>
+                </div>
+              </div>
+              <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-heading font-bold" x-text="t('proj8_name')"></h3>
+                  <a href="https://github.com/quangtuanitmo18/sticker-studio" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj8_desc')"></p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <span class="tech-tag">Next.js 15</span><span class="tech-tag">Konva</span><span class="tech-tag">Tailwind v4</span><span class="tech-tag">Remove.bg</span><span class="tech-tag">Fal.ai</span><span class="tech-tag">Replicate</span>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
+                  <a href="https://sticker-studio-tau.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">DEMO →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="w-full flex-shrink-0 px-1">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-heading font-bold" x-text="t('proj9_name')"></h3>
+                  <a href="https://github.com/quangtuanitmo18/master-thesis" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj9_desc')"></p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <span class="tech-tag">Python</span><span class="tech-tag">LLM</span><span class="tech-tag">SAST</span><span class="tech-tag">OWASP</span><span class="tech-tag">SARIF</span><span class="tech-tag">Streamlit</span>
+                </div>
+              </div>
+              <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-heading font-bold">VDT Cloud Phase 2</h3>
+                  <a href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj4_desc')"></p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <span class="tech-tag">K8s</span><span class="tech-tag">Helm</span><span class="tech-tag">GitOps</span><span class="tech-tag">Eclipse Che</span>
+                </div>
+              </div>
+              <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-heading font-bold">VDT Phase 1</h3>
+                  <a href="https://github.com/quangtuanitmo18/Viettel-Digital-Talent-2024" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj5_desc')"></p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <span class="tech-tag">Docker</span><span class="tech-tag">K8s</span><span class="tech-tag">Ansible</span><span class="tech-tag">CI/CD</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="w-full flex-shrink-0 px-1">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="font-heading font-bold">Modern Landing Page</h3>
+                  <a href="https://github.com/quangtuanitmo18/NextJS-Landing-page" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj6_desc')"></p>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <span class="tech-tag">Next.js 14</span><span class="tech-tag">Tailwind</span><span class="tech-tag">TypeScript</span>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
+                  <a href="https://next-js-landing-page-seven.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">DEMO →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col reveal reveal-delay-1">
-        <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold" x-text="t('proj2_name')"></h3>
-          <a href="https://github.com/quangtuanitmo18/E-commerce-Vite-TS" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
-        </div>
-        <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj2_desc')"></p>
-        <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind</span><span class="tech-tag">Vitest</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
-          <a href="https://shopee-clone-ts-nu.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">DEMO →</a>
-          <button @click="modal='shopee'" class="text-xs text-muted hover:text-txt dark:hover:text-txt-dark transition" x-text="t('proj_more')"></button>
-        </div>
-      </div>
+      <!-- Navigation Arrows -->
+      <button @click="slide = slide > 0 ? slide - 1 : totalSlides - 1" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-3 w-10 h-10 flex items-center justify-center bg-surface dark:bg-surface-dark border border-line dark:border-line-dark text-muted hover:text-accent dark:hover:text-accent-dark transition rounded-full shadow-lg z-10">
+        <i class="fas fa-chevron-left text-sm"></i>
+      </button>
+      <button @click="slide = slide < totalSlides - 1 ? slide + 1 : 0" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-3 w-10 h-10 flex items-center justify-center bg-surface dark:bg-surface-dark border border-line dark:border-line-dark text-muted hover:text-accent dark:hover:text-accent-dark transition rounded-full shadow-lg z-10">
+        <i class="fas fa-chevron-right text-sm"></i>
+      </button>
+    </div>
 
-      <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col reveal reveal-delay-2">
-        <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold" x-text="t('proj3_name')"></h3>
-          <a href="https://github.com/quangtuanitmo18/nodejs-twitter" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
-        </div>
-        <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj3_desc')"></p>
-        <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="tech-tag">Express</span><span class="tech-tag">MongoDB</span><span class="tech-tag">AWS</span><span class="tech-tag">OAuth2</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
-          <a href="https://github.com/quangtuanitmo18/nodejs-twitter" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">CODE →</a>
-          <button @click="modal='twitter'" class="text-xs text-muted hover:text-txt dark:hover:text-txt-dark transition" x-text="t('proj_more')"></button>
-        </div>
-      </div>
+    <!-- Dots -->
+    <div class="flex justify-center gap-2 mt-8">
+      <template x-for="i in totalSlides" :key="i">
+        <button @click="slide = i - 1" class="h-2.5 rounded-full transition-all duration-300" :class="slide === i - 1 ? 'bg-accent dark:bg-accent-dark w-6' : 'bg-line dark:bg-line-dark hover:bg-muted w-2.5'"></button>
+      </template>
+    </div>
 
-      <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col reveal">
-        <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold">VDT Cloud Phase 2</h3>
-          <a href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
-        </div>
-        <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj4_desc')"></p>
-        <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="tech-tag">K8s</span><span class="tech-tag">Helm</span><span class="tech-tag">GitOps</span><span class="tech-tag">Eclipse Che</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
-          <a href="https://github.com/quangtuanitmo18/CDE-VDT-2024-Phase-2" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">CODE →</a>
-        </div>
-      </div>
-
-      <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col reveal reveal-delay-1">
-        <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold">VDT Phase 1</h3>
-          <a href="https://github.com/quangtuanitmo18/Viettel-Digital-Talent-2024" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
-        </div>
-        <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj5_desc')"></p>
-        <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="tech-tag">Docker</span><span class="tech-tag">K8s</span><span class="tech-tag">Ansible</span><span class="tech-tag">CI/CD</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
-          <a href="https://github.com/quangtuanitmo18/Viettel-Digital-Talent-2024" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">CODE →</a>
-        </div>
-      </div>
-
-      <div class="p-6 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark card-lift flex flex-col reveal reveal-delay-2">
-        <div class="flex items-start justify-between mb-3">
-          <h3 class="font-heading font-bold">Modern Landing Page</h3>
-          <a href="https://github.com/quangtuanitmo18/NextJS-Landing-page" target="_blank" class="text-muted hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
-        </div>
-        <p class="text-sm text-muted dark:text-muted-dark mb-4 flex-1" x-text="t('proj6_desc')"></p>
-        <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="tech-tag">Next.js 14</span><span class="tech-tag">Tailwind</span><span class="tech-tag">TypeScript</span>
-        </div>
-        <div class="flex items-center justify-between pt-4 border-t border-line dark:border-line-dark">
-          <a href="https://next-js-landing-page-seven.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark text-xs font-mono hover:underline">DEMO →</a>
-        </div>
+    <!-- Open Source Contributions -->
+    <div class="mt-14 reveal">
+      <h3 class="font-heading text-xl font-bold mb-4 flex items-center gap-3">
+        <i class="fas fa-code-branch text-accent dark:text-accent-dark"></i>
+        <span x-text="t('oss_title')"></span>
+      </h3>
+      <p class="text-sm text-muted dark:text-muted-dark mb-6 max-w-3xl" x-html="t('oss_intro')"></p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="https://hawk.so/" target="_blank" class="group p-5 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark hover:border-accent dark:hover:border-accent-dark transition-all duration-300 flex items-start gap-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-surface dark:bg-surface-dark border border-line dark:border-line-dark rounded-lg text-accent dark:text-accent-dark">
+            <i class="fas fa-bug text-sm"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <h4 class="font-heading font-bold group-hover:text-accent dark:group-hover:text-accent-dark transition">Hawk.so</h4>
+              <span class="text-xs text-muted font-mono">codex.so</span>
+              <i class="fas fa-external-link-alt text-[10px] text-muted group-hover:text-accent dark:group-hover:text-accent-dark transition"></i>
+            </div>
+            <p class="text-sm text-muted dark:text-muted-dark" x-text="t('oss_hawk_desc')"></p>
+          </div>
+        </a>
+        <a href="https://cdx-ui.vercel.app/" target="_blank" class="group p-5 bg-bg dark:bg-bg-dark border border-line dark:border-line-dark hover:border-accent dark:hover:border-accent-dark transition-all duration-300 flex items-start gap-4">
+          <div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-surface dark:bg-surface-dark border border-line dark:border-line-dark rounded-lg text-accent dark:text-accent-dark">
+            <i class="fas fa-palette text-sm"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <h4 class="font-heading font-bold group-hover:text-accent dark:group-hover:text-accent-dark transition">CodeX UI</h4>
+              <span class="text-xs text-muted font-mono">codex.so</span>
+              <i class="fas fa-external-link-alt text-[10px] text-muted group-hover:text-accent dark:group-hover:text-accent-dark transition"></i>
+            </div>
+            <p class="text-sm text-muted dark:text-muted-dark" x-text="t('oss_codexui_desc')"></p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- Project Modals -->
-  <template x-for="m in ['qr','shopee','twitter']">
-    <div x-show="modal===m" @keydown.escape.window="modal=null" @click="modal=null" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" x-transition.opacity style="display:none">
-      <div @click.stop class="bg-surface dark:bg-surface-dark border border-line dark:border-line-dark max-w-2xl w-full max-h-[80vh] overflow-y-auto" style="border-radius:2px;">
-        <div x-show="m==='qr'" class="p-8">
-          <div class="flex justify-between items-center mb-6"><h3 class="font-heading text-xl font-bold" x-text="t('modal1_title')"></h3><button @click="modal=null"><i class="fas fa-times text-muted"></i></button></div>
-          <p class="mb-4" x-text="t('modal1_desc')"></p>
-          <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">Fastify</span><span class="tech-tag">Prisma</span><span class="tech-tag">TypeScript</span><span class="tech-tag">SQLite</span><span class="tech-tag">WebSocket</span><span class="tech-tag">Next.js</span><span class="tech-tag">Shadcn/ui</span><span class="tech-tag">React Query</span></div>
-          <ul class="text-sm space-y-1 mb-4"><template x-for="(item, i) in tList('modal1_items')" :key="i"><li x-text="'→ ' + item"></li></template></ul>
-          <div class="flex items-center gap-4 text-sm"><a href="https://164181.msk.web.highserver.ru/en/login" target="_blank" class="text-accent dark:text-accent-dark font-mono hover:underline">DEMO →</a><span class="text-muted text-xs">(admin@order.com / 123456)</span></div>
-        </div>
-        <div x-show="m==='shopee'" class="p-8">
-          <div class="flex justify-between items-center mb-6"><h3 class="font-heading text-xl font-bold" x-text="t('modal2_title')"></h3><button @click="modal=null"><i class="fas fa-times text-muted"></i></button></div>
-          <p class="mb-4" x-text="t('modal2_desc')"></p>
-          <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind</span><span class="tech-tag">React Query</span><span class="tech-tag">Vitest</span><span class="tech-tag">Storybook</span></div>
-          <ul class="text-sm space-y-1 mb-4"><template x-for="(item, i) in tList('modal2_items')" :key="i"><li x-text="'→ ' + item"></li></template></ul>
-          <a href="https://shopee-clone-ts-nu.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark font-mono text-sm hover:underline">DEMO →</a>
-        </div>
-        <div x-show="m==='twitter'" class="p-8">
-          <div class="flex justify-between items-center mb-6"><h3 class="font-heading text-xl font-bold" x-text="t('modal3_title')"></h3><button @click="modal=null"><i class="fas fa-times text-muted"></i></button></div>
-          <p class="mb-4" x-text="t('modal3_desc')"></p>
-          <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">Express</span><span class="tech-tag">TypeScript</span><span class="tech-tag">MongoDB</span><span class="tech-tag">AWS S3</span><span class="tech-tag">AWS SES</span><span class="tech-tag">OAuth2</span></div>
-          <ul class="text-sm space-y-1 mb-4"><template x-for="(item, i) in tList('modal3_items')" :key="i"><li x-text="'→ ' + item"></li></template></ul>
-          <a href="https://github.com/quangtuanitmo18/nodejs-twitter" target="_blank" class="text-accent dark:text-accent-dark font-mono text-sm hover:underline">CODE →</a>
-        </div>
+  <!-- Project Modal -->
+  <div x-show="modal==='qr'" @keydown.escape.window="modal=null" @click="modal=null" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" x-transition.opacity style="display:none">
+    <div @click.stop class="bg-surface dark:bg-surface-dark border border-line dark:border-line-dark max-w-2xl w-full max-h-[80vh] overflow-y-auto" style="border-radius:2px;">
+      <div class="p-8">
+        <div class="flex justify-between items-center mb-6"><h3 class="font-heading text-xl font-bold" x-text="t('modal1_title')"></h3><button @click="modal=null"><i class="fas fa-times text-muted"></i></button></div>
+        <p class="mb-4" x-text="t('modal1_desc')"></p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">Fastify</span><span class="tech-tag">Prisma</span><span class="tech-tag">TypeScript</span><span class="tech-tag">SQLite</span><span class="tech-tag">WebSocket</span><span class="tech-tag">Next.js</span><span class="tech-tag">Shadcn/ui</span><span class="tech-tag">React Query</span><span class="tech-tag">OpenAI</span><span class="tech-tag">ChromaDB</span></div>
+        <div class="flex flex-col gap-2 text-sm"><div class="flex items-center gap-4"><a href="https://qrorder.ru/en/tables/3?token=tbl-token-3" target="_blank" class="text-accent dark:text-accent-dark font-mono hover:underline">ORDER PAGE →</a></div><div class="flex items-center gap-4"><a href="https://qrorder.ru/en/manage/login" target="_blank" class="text-accent dark:text-accent-dark font-mono hover:underline">MANAGE →</a><span class="text-muted text-xs">(admin@example.com / password123)</span></div></div>
       </div>
     </div>
-  </template>
+  </div>
+
+  <!-- LearnHub Modal -->
+  <div x-show="modal==='learnhub'" @keydown.escape.window="modal=null" @click="modal=null" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" x-transition.opacity style="display:none">
+    <div @click.stop class="bg-surface dark:bg-surface-dark border border-line dark:border-line-dark max-w-2xl w-full max-h-[80vh] overflow-y-auto" style="border-radius:2px;">
+      <div class="p-8">
+        <div class="flex justify-between items-center mb-6"><h3 class="font-heading text-xl font-bold" x-text="t('modal7_title')"></h3><button @click="modal=null"><i class="fas fa-times text-muted"></i></button></div>
+        <p class="mb-4" x-text="t('modal7_desc')"></p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">Next.js 15</span><span class="tech-tag">React 19</span><span class="tech-tag">NestJS 11</span><span class="tech-tag">Prisma</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Stripe</span><span class="tech-tag">OpenAI</span><span class="tech-tag">Socket.io</span><span class="tech-tag">BullMQ</span><span class="tech-tag">AWS S3</span><span class="tech-tag">Tiptap</span><span class="tech-tag">Radix UI</span></div>
+        <div class="flex flex-col gap-2 text-sm"><div class="flex items-center gap-4"><a href="https://learn-hub-tau.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark font-mono hover:underline">DEMO →</a></div><div class="flex items-center gap-4"><a href="https://learn-hub-tau.vercel.app/" target="_blank" class="text-accent dark:text-accent-dark font-mono hover:underline">ADMIN →</a><span class="text-muted text-xs">(admin@example.com / admin123)</span></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Skills Section -->

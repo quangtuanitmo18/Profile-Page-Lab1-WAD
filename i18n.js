@@ -113,11 +113,28 @@ const translations = {
   proj_title: { ru: 'Проекты', en: 'Projects', vi: 'Dự án' },
   proj_more:  { ru: 'Подробнее', en: 'Details', vi: 'Chi tiết' },
 
+  oss_title: { ru: 'Open Source вклад', en: 'Open Source Contributions', vi: 'Đóng góp Open Source' },
+  oss_intro: {
+    ru: 'Являюсь участником <a href="https://github.com/codex-team" target="_blank" class="text-accent dark:text-accent-dark hover:underline font-medium">CodeX</a> — международной команды разработчиков, создающей open-source инструменты для веба (Editor.js, Hawk и др.). В роли Fullstack-разработчика участвую в разработке продуктов команды.',
+    en: 'Member of <a href="https://github.com/codex-team" target="_blank" class="text-accent dark:text-accent-dark hover:underline font-medium">CodeX</a> — an international team of developers building open-source tools for the web (Editor.js, Hawk, etc.). Contributing as a Fullstack Developer on the team\'s products.',
+    vi: 'Thành viên của <a href="https://github.com/codex-team" target="_blank" class="text-accent dark:text-accent-dark hover:underline font-medium">CodeX</a> — nhóm lập trình viên quốc tế xây dựng các công cụ open-source cho web (Editor.js, Hawk, v.v.). Đóng góp với vai trò Lập trình viên Fullstack trong các sản phẩm của nhóm.'
+  },
+  oss_hawk_desc: {
+    ru: 'Мониторинг ошибок и исключений для веб-приложений. Вклад в разработку системы трекинга в команде CodeX.',
+    en: 'Error and exception monitoring for web applications. Contributed to the tracking system as part of the CodeX team.',
+    vi: 'Giám sát lỗi và ngoại lệ cho ứng dụng web. Đóng góp vào hệ thống tracking trong nhóm CodeX.'
+  },
+  oss_codexui_desc: {
+    ru: 'Библиотека UI-компонентов от команды CodeX. Участие в разработке компонентов и системы дизайн-токенов.',
+    en: 'UI component library by the CodeX team. Contributed to component development and the design token system.',
+    vi: 'Thư viện UI component của nhóm CodeX. Đóng góp phát triển component và hệ thống design token.'
+  },
+
   proj1_name: { ru: 'Система заказов по QR-коду', en: 'QR Code Ordering System', vi: 'Hệ thống đặt hàng QR Code' },
   proj1_desc: {
-    ru: 'Комплексное цифровое решение: удобный заказ через QR-коды для гостей и обработка заказов в реальном времени для кухни.',
-    en: 'A comprehensive digital solution enabling seamless QR code ordering for customers and real-time order processing for restaurants.',
-    vi: 'Giải pháp số hóa toàn diện cho nhà hàng: mang đến trải nghiệm gọi món mượt mà qua QR code và trạm quản lý đơn hàng realtime cho nhà bếp.'
+    ru: 'AI-платформа для ресторанов: заказ через QR, AI-ассистент (GPT + RAG), обработка заказов в реальном времени и панель управления.',
+    en: 'AI-powered restaurant platform: QR ordering, GPT-based AI assistant with RAG, real-time order processing, and a full admin dashboard.',
+    vi: 'Nền tảng nhà hàng AI: đặt hàng qua QR, trợ lý AI (GPT + RAG), xử lý đơn hàng realtime và bảng điều khiển quản trị toàn diện.'
   },
   proj2_name: { ru: 'Клон Shopee', en: 'Shopee Clone', vi: 'Clone Shopee' },
   proj2_desc: {
@@ -147,17 +164,44 @@ const translations = {
     vi: 'Trang đích (landing page) hiện đại tập trung vào tỷ lệ chuyển đổi với giao diện cuốn hút, hiệu ứng tinh tế và tương thích mọi thiết bị.'
   },
 
+  proj7_name: { ru: 'LearnHub', en: 'LearnHub', vi: 'LearnHub' },
+  proj7_desc: {
+    ru: 'Full-stack платформа онлайн-обучения: курсы с видео, статьями и квизами, оплата, AI-чатбот, Q&A, отзывы и панель аналитики.',
+    en: 'Full-stack e-learning platform: courses with video, articles & quizzes, payments, AI chatbot, Q&A, reviews, and an analytics dashboard.',
+    vi: 'Nền tảng e-learning full-stack: khóa học video/bài viết/quiz, thanh toán, chatbot AI, Q&A, đánh giá và bảng phân tích.'
+  },
+
+  proj8_name: { ru: 'Sticker Studio', en: 'Sticker Studio', vi: 'Sticker Studio' },
+  proj8_desc: {
+    ru: 'AI-студия для создания стикеров, GIF, фотополосок, коллажей и аватарок. Удаление фона, фильтры, текст/эмодзи-оверлеи и экспорт для мессенджеров.',
+    en: 'AI-powered creative studio for stickers, GIFs, photo strips, collages, and avatars. Background removal, filters, text/emoji overlays, and messenger-ready export.',
+    vi: 'Studio sáng tạo AI: sticker, GIF, ảnh strip, collage và avatar. Xóa nền, bộ lọc, chèn text/emoji và xuất cho các ứng dụng nhắn tin.'
+  },
+
+  proj9_name: { ru: 'Детекция ложных срабатываний SAST', en: 'SAST False Positive Detection', vi: 'Phát hiện False Positive SAST' },
+  proj9_desc: {
+    ru: 'Магистерская диссертация: использование LLM (GPT-5, Gemini 2.5, DeepSeek R1) для снижения ложных срабатываний в результатах статического анализа кода (OWASP Benchmark + OpenVuln).',
+    en: 'Master thesis: leveraging LLMs (GPT-5, Gemini 2.5, DeepSeek R1) to reduce false positives from static analysis tools, evaluated on OWASP Benchmark and OpenVuln datasets.',
+    vi: 'Luận văn thạc sĩ: sử dụng LLM (GPT-5, Gemini 2.5, DeepSeek R1) để giảm false positive từ công cụ phân tích tĩnh, đánh giá trên OWASP Benchmark và OpenVuln.'
+  },
+
   // Modal details
   modal1_title: { ru: 'Система заказов по QR-коду', en: 'QR Code Ordering System', vi: 'Hệ thống đặt hàng QR Code' },
   modal1_desc: {
-    ru: 'Решение для цифровизации ресторанного бизнеса с QR-кодами.',
-    en: 'A digital solution for restaurant businesses powered by QR codes.',
-    vi: 'Giải pháp số hóa nhà hàng sử dụng QR code.'
+    ru: 'Full-stack AI-платформа для ресторанов: гости сканируют QR-код, общаются с AI-ассистентом, оформляют заказы и оплачивают — всё со смартфона.',
+    en: 'A full-stack, AI-powered restaurant platform. Customers scan a QR code, chat with an AI assistant, place orders, and pay — all from their phone.',
+    vi: 'Nền tảng nhà hàng full-stack tích hợp AI. Khách quét QR, trò chuyện với trợ lý AI, đặt món và thanh toán — tất cả từ điện thoại.'
   },
   modal1_items: {
-    ru: ['Управление меню, заказами, персоналом, аналитика', 'Онлайн-меню с детальным представлением блюд', 'Обработка заказов в реальном времени (WebSockets)', 'SEO-оптимизация с Next.js'],
-    en: ['Menu, order, staff management & analytics', 'Online menu with detailed dish views', 'Real-time order processing (WebSockets)', 'SEO optimization with Next.js'],
-    vi: ['Quản lý menu, đơn hàng, nhân viên & phân tích', 'Menu online với hiển thị chi tiết món ăn', 'Xử lý đơn hàng realtime (WebSockets)', 'Tối ưu SEO với Next.js']
+    ru: ['AI-ассистент (GPT + DAG Executor) с рекомендациями и заказом через чат', 'RAG-поиск по меню через ChromaDB (vector embeddings)', 'Kanban-доска заказов в реальном времени (WebSockets + FCM)', 'RBAC: Owner, Manager, Staff; управление меню, столами, купонами и блогом', 'Мультиязычность (RU/EN/VI) и оплата через YooKassa'],
+    en: ['AI assistant (GPT + DAG Executor) with recommendations & chat ordering', 'RAG-powered menu search via ChromaDB (vector embeddings)', 'Real-time Kanban order board (WebSockets + FCM push notifications)', 'RBAC: Owner, Manager, Staff; menu, table, coupon & blog management', 'Multi-language (RU/EN/VI) and YooKassa payment integration'],
+    vi: ['Trợ lý AI (GPT + DAG Executor) với gợi ý và đặt hàng qua chat', 'Tìm kiếm menu RAG qua ChromaDB (vector embeddings)', 'Bảng Kanban đơn hàng realtime (WebSockets + FCM push notifications)', 'RBAC: Owner, Manager, Staff; quản lý menu, bàn, coupon & blog', 'Đa ngôn ngữ (RU/EN/VI) và tích hợp thanh toán YooKassa']
+  },
+  modal7_title: { ru: 'LearnHub', en: 'LearnHub', vi: 'LearnHub' },
+  modal7_desc: {
+    ru: 'Full-stack платформа онлайн-обучения, где преподаватели создают курсы с видеоуроками, статьями и автоматически проверяемыми квизами. Студенты могут покупать курсы, отслеживать прогресс, участвовать в Q&A-обсуждениях, оставлять отзывы и получать помощь от AI-чатбота. Включает панель администратора с аналитикой, уведомления в реальном времени, RBAC, систему купонов и интерактивный онбординг.',
+    en: 'A full-stack online learning platform where instructors can create and manage courses with video lessons, rich-text articles, and auto-graded quizzes. Students can browse courses, make payments, track progress, participate in Q&A discussions, leave reviews, and get help from an AI chatbot assistant. Includes an admin dashboard with analytics, real-time notifications, role-based access control, coupon system, and an interactive guided tour for onboarding.',
+    vi: 'Nền tảng học trực tuyến full-stack nơi giảng viên tạo khóa học với video, bài viết rich-text và quiz tự chấm điểm. Học viên duyệt khóa học, thanh toán, theo dõi tiến độ, tham gia Q&A, đánh giá và nhận hỗ trợ từ chatbot AI. Bao gồm bảng quản trị với phân tích, thông báo realtime, RBAC, hệ thống coupon và tour hướng dẫn tương tác.'
   },
   modal2_title: { ru: 'Клон Shopee', en: 'Shopee Clone', vi: 'Clone Shopee' },
   modal2_desc: {
