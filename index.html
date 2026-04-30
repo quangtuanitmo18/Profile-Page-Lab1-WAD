@@ -90,8 +90,9 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-    body { font-family: 'Inter', sans-serif; background: #F8F7F4; color: #1A1A2E; transition: background 0.4s, color 0.4s; }
+    body { font-family: 'Inter', sans-serif; background: #F8F7F4; color: #1A1A2E; transition: background 0.4s, color 0.4s, opacity 0.2s, filter 0.2s; }
     html.dark body { background: #0A0A0F !important; color: #E8E6E3 !important; }
+    body.lang-changing { opacity: 0.5; filter: blur(4px); }
     body::before {
       content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.03;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -107,9 +108,18 @@
     @keyframes blink { 50% { opacity: 0; } }
     .nav-scrolled { background: rgba(248,247,244,0.9) !important; backdrop-filter: blur(12px); border-bottom: 1px solid #E8E6E3; }
     .dark .nav-scrolled { background: rgba(10,10,15,0.9) !important; border-bottom-color: #1E1E2A; }
-    .card-lift { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease; }
+    .card-lift { position: relative; overflow: hidden; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease; }
     .card-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
     .dark .card-lift:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .card-lift::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+      background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(232,85,58,0.08), transparent 40%);
+    }
+    .dark .card-lift::before {
+      background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,107,74,0.12), transparent 40%);
+    }
+    .card-lift:hover::before { opacity: 1; }
+    .card-lift > * { position: relative; z-index: 1; }
     .accent-card { border-left: 3px solid #E8553A; }
     .dark .accent-card { border-left-color: #FF6B4A; }
     .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: #1B7A5A; animation: pulse 2s ease-in-out infinite; }
@@ -203,9 +213,41 @@
       <div>
         <p class="font-mono text-xs text-muted dark:text-muted-dark mb-4 tracking-widest uppercase reveal">// portfolio</p>
         <h1 class="font-heading text-5xl md:text-7xl font-bold leading-[1.05] mb-4 reveal reveal-delay-1">
-          <span x-text="t('hero_name').split('\n')[0]"></span><br/><span x-text="t('hero_name').split('\n')[1]"></span><span class="cursor"></span>
+          <span x-text="t('hero_name').split('\n')[0]"></span><br/><span x-text="t('hero_name').split('\n')[1]"></span>
         </h1>
-        <p class="font-mono text-accent dark:text-accent-dark text-sm md:text-base mb-6 reveal reveal-delay-2" x-text="t('hero_role')"></p>
+        <p class="font-mono text-accent dark:text-accent-dark text-sm md:text-base mb-6 reveal reveal-delay-2" 
+           x-data="{
+              text: '', roles: [], roleIndex: 0, charIndex: 0, isDeleting: false,
+              type() {
+                 if(!this.roles.length) return;
+                 const currentRole = this.roles[this.roleIndex];
+                 if (this.isDeleting) {
+                    this.text = currentRole.substring(0, this.charIndex - 1);
+                    this.charIndex--;
+                 } else {
+                    this.text = currentRole.substring(0, this.charIndex + 1);
+                    this.charIndex++;
+                 }
+                 let typingSpeed = this.isDeleting ? 30 : 80;
+                 if (!this.isDeleting && this.charIndex === currentRole.length) {
+                    typingSpeed = 2000;
+                    this.isDeleting = true;
+                 } else if (this.isDeleting && this.charIndex === 0) {
+                    this.isDeleting = false;
+                    this.roleIndex = (this.roleIndex + 1) % this.roles.length;
+                    typingSpeed = 500;
+                 }
+                 setTimeout(() => this.type(), typingSpeed);
+              }
+           }"
+           x-init="
+             $watch('lang', () => { roles = tList('hero_roles'); });
+             roles = tList('hero_roles');
+             setTimeout(() => type(), 1000);
+           "
+        >
+          <span x-text="text"></span><span class="cursor"></span>
+        </p>
         
         <!-- Tech Stack Icons -->
         <div class="flex flex-wrap items-center gap-3 mb-8 reveal reveal-delay-2">
@@ -250,17 +292,44 @@
         </div>
       </div>
       <div class="hidden md:flex items-center justify-center reveal reveal-delay-2">
-        <div class="relative w-[320px] h-[340px]">
+        <div class="relative w-[420px] h-[480px]">
           <!-- Photo 1: Amber Room — tilted behind, top-left -->
-          <div class="absolute top-0 left-0 w-36 h-44 overflow-hidden border-2 border-line dark:border-line-dark shadow-lg z-10 hover:z-30 transition-all duration-500 hover:scale-105 group" style="border-radius:2px; transform: rotate(-5deg);">
+          <div class="absolute top-0 left-0 w-48 h-64 overflow-hidden border-2 border-line dark:border-line-dark shadow-lg z-10 hover:z-30 transition-all duration-500 hover:scale-105 group" style="border-radius:2px; transform: rotate(-5deg);">
             <img src="./images/photo1.jpg" alt="At Amber Room, Saint Petersburg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
-          <!-- Photo 2: Close-up — main center, largest -->
-          <div class="absolute top-6 left-24 w-48 h-56 overflow-hidden border-2 border-accent dark:border-accent-dark shadow-2xl z-20 hover:z-30 transition-all duration-500 hover:scale-105 group" style="border-radius:2px;">
-            <img src="./images/photo2.jpg" alt="Nguyen Quang Tuan" class="w-full h-full object-cover transition-all duration-500" />
+          <!-- Photo 2: Close-up — main center, largest (Replaced with Video) -->
+          <div class="absolute top-10 left-32 w-64 h-80 overflow-hidden border-2 border-accent dark:border-accent-dark shadow-2xl z-20 hover:z-30 transition-all duration-500 hover:scale-105 group bg-surface dark:bg-surface-dark" style="border-radius:2px;" x-data="{
+            initVideos() {
+              if (this.darkMode) {
+                this.$refs.vidLight.classList.remove('opacity-0');
+                this.$refs.vidDark.classList.add('opacity-0');
+              } else {
+                this.$refs.vidDark.classList.remove('opacity-0');
+                this.$refs.vidLight.classList.add('opacity-0');
+              }
+              
+              this.$watch('darkMode', (isDark) => {
+                if (isDark) {
+                  this.$refs.vidLight.classList.add('opacity-0');
+                  this.$refs.vidDark.classList.remove('opacity-0');
+                  this.$refs.vidDark.currentTime = 0;
+                  this.$refs.vidDark.playbackRate = 1.5; // Bắt buộc set lại tốc độ trước khi phát
+                  this.$refs.vidDark.play();
+                } else {
+                  this.$refs.vidDark.classList.add('opacity-0');
+                  this.$refs.vidLight.classList.remove('opacity-0');
+                  this.$refs.vidLight.currentTime = 0;
+                  this.$refs.vidLight.playbackRate = 2.0; // Giảm nhẹ xuống 2.0 để tránh bị drop frame (giật hình)
+                  this.$refs.vidLight.play();
+                }
+              });
+            }
+          }" x-init="initVideos()">
+            <video x-ref="vidDark" src="./images/video_dark.mp4" muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover"></video>
+            <video x-ref="vidLight" src="./images/video_light.mp4" muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover"></video>
           </div>
           <!-- Photo 3: Autumn — bottom-right, tilted -->
-          <div class="absolute bottom-0 right-0 w-36 h-44 overflow-hidden border-2 border-line dark:border-line-dark shadow-lg z-10 hover:z-30 transition-all duration-500 hover:scale-105 group" style="border-radius:2px; transform: rotate(4deg);">
+          <div class="absolute bottom-0 right-0 w-48 h-64 overflow-hidden border-2 border-line dark:border-line-dark shadow-lg z-10 hover:z-30 transition-all duration-500 hover:scale-105 group" style="border-radius:2px; transform: rotate(4deg);">
             <img src="./images/photo3.jpg" alt="Autumn in Saint Petersburg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
           </div>
         </div>
@@ -680,6 +749,17 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    
+    // Mouse tracking for Card Glow effect
+    document.addEventListener('mousemove', e => {
+      document.querySelectorAll('.card-lift').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
   });
 </script>
 </body>

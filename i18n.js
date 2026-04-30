@@ -8,6 +8,11 @@ const translations = {
   // — Hero —
   hero_name:    { ru: 'Нгуен Куанг\nТуан', en: 'Nguyen Quang\nTuan', vi: 'Nguyễn Quang\nTuấn' },
   hero_role:    { ru: 'Full-Stack Engineer · 3+ года опыта', en: 'Full-Stack Engineer · 3+ years', vi: 'Full-Stack Engineer · 3+ năm' },
+  hero_roles: {
+    ru: ['Full-Stack Инженер', 'Разработчик React & Node.js', 'Энтузиаст DevOps и Cloud'],
+    en: ['Full-Stack Engineer', 'React & Node.js Developer', 'Cloud & DevOps Enthusiast'],
+    vi: ['Kỹ sư Full-Stack', 'Lập trình viên React & Node.js', 'Đam mê DevOps & Cloud']
+  },
   hero_status:  { ru: 'Открыт к предложениям', en: 'Open to opportunities', vi: 'Sẵn sàng nhận việc' },
   hero_location: { ru: 'Санкт-Петербург, Россия', en: 'Saint Petersburg, Russia', vi: 'Saint Petersburg, Nga' },
   hero_cv:      { ru: 'Скачать резюме', en: 'Download CV', vi: 'Tải CV' },
@@ -250,9 +255,16 @@ function i18nSetup() {
   return {
     lang: localStorage.getItem('lang') || 'ru',
     setLang(l) {
-      this.lang = l;
-      localStorage.setItem('lang', l);
-      document.documentElement.lang = l;
+      if (this.lang === l) return;
+      document.body.classList.add('lang-changing');
+      setTimeout(() => {
+        this.lang = l;
+        localStorage.setItem('lang', l);
+        document.documentElement.lang = l;
+        setTimeout(() => {
+          document.body.classList.remove('lang-changing');
+        }, 50);
+      }, 200);
     },
     t(key) {
       const entry = translations[key];
