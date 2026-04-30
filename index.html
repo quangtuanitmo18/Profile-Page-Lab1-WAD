@@ -136,6 +136,18 @@
     .dark .grid-bg {
       background-image: linear-gradient(rgba(255,107,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,107,74,0.06) 1px, transparent 1px);
     }
+    
+    /* Boring Mode Styles */
+    body.boring-mode { background: #fff !important; color: #000 !important; font-family: "Times New Roman", Times, serif !important; }
+    body.boring-mode * { background: transparent !important; color: #000 !important; border-color: #000 !important; box-shadow: none !important; font-family: inherit !important; border-radius: 0 !important; transition: none !important; transform: none !important; animation: none !important; opacity: 1 !important; filter: none !important; }
+    body.boring-mode a, body.boring-mode button { color: #0000EE !important; text-decoration: underline !important; }
+    body.boring-mode video { display: none !important; }
+    body.boring-mode nav { border-bottom: 2px solid black !important; }
+    body.boring-mode .grid { display: block !important; margin-bottom: 20px; }
+    body.boring-mode .grid > div { margin-bottom: 20px; }
+    body.boring-mode .absolute { position: static !important; }
+    body.boring-mode .hidden { display: block !important; }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal { transition: none; opacity: 1; transform: none; }
       .cursor { animation: none; }
@@ -363,6 +375,24 @@
           <p class="text-sm"><i class="fas fa-phone text-accent dark:text-accent-dark mr-2 text-xs"></i>+7 953 362 67 95</p>
           <p class="text-sm"><i class="fab fa-telegram text-accent dark:text-accent-dark mr-2 text-xs"></i>@quangtuanitmo18</p>
           <p class="text-sm"><i class="fas fa-envelope text-accent dark:text-accent-dark mr-2 text-xs"></i>quangtuanitmo18@gmail.com</p>
+        </div>
+        <!-- Honest Stats -->
+        <div class="p-4 bg-surface dark:bg-surface-dark border border-accent dark:border-accent-dark card-lift" x-data="{ bugs: 14052, init() { setInterval(() => { this.bugs += Math.floor(Math.random() * 3) }, 2500) } }">
+          <p class="font-mono text-xs text-accent dark:text-accent-dark mb-3" x-text="t('about_stats')"></p>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-sm">
+              <span class="flex items-center gap-2 text-muted dark:text-muted-dark"><i class="fas fa-bug w-4"></i> <span x-text="t('stat_bugs')"></span></span>
+              <span class="font-mono font-bold text-accent dark:text-accent-dark" x-text="bugs.toLocaleString()"></span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="flex items-center gap-2 text-muted dark:text-muted-dark"><i class="fas fa-coffee w-4"></i> <span x-text="t('stat_coffee')"></span></span>
+              <span class="font-mono font-bold text-txt dark:text-txt-dark">8,903</span>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="flex items-center gap-2 text-muted dark:text-muted-dark"><i class="fab fa-stack-overflow w-4"></i> <span x-text="t('stat_so')"></span></span>
+              <span class="font-mono font-bold text-muted dark:text-muted-dark line-through opacity-50" title="404 Not Found">404</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -710,15 +740,22 @@
     <p class="font-mono text-xs text-accent dark:text-accent-dark mb-4 tracking-widest reveal">// let's connect</p>
     <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6 reveal" x-text="t('footer_title')"></h2>
     <p class="text-muted dark:text-muted-dark mb-8 max-w-md mx-auto reveal" x-text="t('footer_desc')"></p>
-    <div class="flex flex-wrap justify-center gap-4 mb-8 reveal">
+    <div class="flex flex-wrap justify-center gap-4 mb-8 reveal relative z-20">
       <a href="mailto:quangtuanitmo18@gmail.com" class="px-6 py-3 bg-accent dark:bg-accent-dark text-white text-sm font-medium hover:opacity-90 transition inline-flex items-center gap-2"><i class="fas fa-envelope text-xs"></i> quangtuanitmo18@gmail.com</a>
       <a href="https://t.me/quangtuanitmo18" target="_blank" class="px-6 py-3 border border-line dark:border-line-dark text-sm font-medium hover:border-accent dark:hover:border-accent-dark transition inline-flex items-center gap-2"><i class="fab fa-telegram text-xs"></i> Telegram</a>
+      <!-- Runaway Reject Button -->
+      <button id="runawayBtn" class="px-6 py-3 bg-surface dark:bg-surface-dark border border-line dark:border-line-dark text-sm font-medium text-muted hover:text-accent dark:hover:text-accent-dark transition flex items-center gap-2 absolute" style="position:relative; z-index: 50; cursor: not-allowed;" @click="alert(t('boring_alert'))">
+        <i class="fas fa-times text-xs"></i> <span x-text="t('cta_reject')"></span>
+      </button>
     </div>
     <div class="flex justify-center gap-6 mb-8 reveal">
       <a href="https://github.com/quangtuanitmo18" target="_blank" class="text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent-dark transition" aria-label="GitHub Profile"><i class="fab fa-github text-lg"></i></a>
       <a href="https://t.me/quangtuanitmo18" target="_blank" class="text-muted dark:text-muted-dark hover:text-accent dark:hover:text-accent-dark transition" aria-label="Telegram Contact"><i class="fab fa-telegram text-lg"></i></a>
     </div>
-    <p class="text-xs text-muted dark:text-muted-dark" x-text="t('footer_copy')"></p>
+    <p class="text-xs text-muted dark:text-muted-dark mb-2 reveal">
+      <button @click="document.body.classList.toggle('boring-mode')" class="hover:underline hover:text-accent transition" x-text="t('boring_btn')"></button>
+    </p>
+    <p class="text-xs text-muted dark:text-muted-dark reveal" x-text="t('footer_copy')"></p>
   </div>
 </footer>
 
@@ -760,6 +797,18 @@
         card.style.setProperty('--mouse-y', `${y}px`);
       });
     });
+
+    // Runaway Button Logic
+    const runawayBtn = document.getElementById('runawayBtn');
+    if (runawayBtn) {
+      runawayBtn.addEventListener('mouseenter', function() {
+        const maxX = window.innerWidth / 4;
+        const maxY = window.innerHeight / 4;
+        const x = (Math.random() - 0.5) * maxX;
+        const y = (Math.random() - 0.5) * maxY;
+        this.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    }
   });
 </script>
 </body>

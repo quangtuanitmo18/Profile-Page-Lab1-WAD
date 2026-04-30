@@ -43,6 +43,10 @@ const translations = {
   about_master:   { ru: 'Магистратура', en: "Master's",   vi: 'Thạc sĩ' },
   about_bachelor: { ru: 'Бакалавриат', en: "Bachelor's",  vi: 'Cử nhân' },
   about_contacts: { ru: 'Контакты',    en: 'Contact',     vi: 'Liên hệ' },
+  about_stats:  { ru: 'Честная статистика', en: 'Honest Stats', vi: 'Thống kê "Thành thật"' },
+  stat_bugs:    { ru: 'Создано багов', en: 'Bugs created', vi: 'Số bug đã tạo' },
+  stat_coffee:  { ru: 'Выпито кофе', en: 'Cups of coffee', vi: 'Số ly cafe đã uống' },
+  stat_so:      { ru: 'Запросов к StackOverflow', en: 'StackOverflow visits', vi: 'Lần tra StackOverflow' },
 
   // — Experience —
   exp_title: { ru: 'Опыт работы', en: 'Work Experience', vi: 'Kinh nghiệm làm việc' },
@@ -248,6 +252,9 @@ const translations = {
     en: "I'm open to new opportunities and would love to discuss your project or position.",
     vi: 'Tôi luôn sẵn sàng cho những cơ hội mới và rất vui được trao đổi về dự án hoặc vị trí của bạn.'
   },
+  cta_reject: { ru: 'Отказать кандидату', en: 'Reject Candidate', vi: 'Từ chối ứng viên' },
+  boring_btn: { ru: 'Слишком красиво? Включить "Скучный режим"', en: 'Too flashy? Enable Boring Mode', vi: 'Giao diện màu mè quá? Bật "Chế độ chán ngắt"' },
+  boring_alert: { ru: 'Попался! Но всё равно найми меня :)', en: 'You caught me! But please hire me anyway :)', vi: 'Bắt được rồi nhé! Nhưng hãy nhận tôi vào làm nha :)' },
   footer_copy: { ru: '© 2025 Нгуен Куанг Туан', en: '© 2025 Nguyen Quang Tuan', vi: '© 2025 Nguyễn Quang Tuấn' },
 };
 
